@@ -1,4 +1,4 @@
-Peço desculpas pela confusão anterior. Aqui está um exemplo de código HTML que inclui um campo de prática de digitação para o seu código de conexão com o banco de dados:
+Peço desculpas pela confusão anterior. Aqui está um exemplo de código HTML que inclui um campo de prática de digitação para o seu código de conexão com o banco de dados, onde o código está bloqueado e você pode digitar por cima dele:
  
  
 <!DOCTYPE html>
@@ -39,6 +39,10 @@ echo "Conexão com o banco de dados estabelecida com sucesso!";
 mysqli_close($conn);
 ?>`;
 
+      typingInput.addEventListener("keydown", function(event) {
+        event.preventDefault();
+      });
+
       typingInput.value = typingText;
     });
   </script>
@@ -51,8 +55,8 @@ mysqli_close($conn);
 </html>
  
  
-Neste exemplo, o código PHP de conexão com o banco de dados é definido na variável "typingText". O valor dessa variável é atribuído ao campo de texto  <textarea>  com o ID "typing-input" usando a propriedade  value . Dessa forma, o código é exibido no campo de texto para você praticar a digitação por cima dele.
+Neste exemplo, o código PHP de conexão com o banco de dados é definido na variável "typingText". O campo de texto  <textarea>  com o ID "typing-input" é configurado para bloquear a digitação usando o evento "keydown". Isso impede que o usuário edite diretamente o código, permitindo que você digite por cima dele.
  
-Ao carregar a página, o código PHP será exibido no campo de texto, permitindo que você pratique a digitação por cima dele.
+Ao carregar a página, o código PHP será exibido no campo de texto, e você poderá praticar a digitação por cima dele sem modificar o código original.
  
 Espero que isso atenda às suas necessidades! Se você tiver mais alguma dúvida, estou à disposição.
