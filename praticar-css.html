@@ -1,4 +1,4 @@
-Claro! Vou adicionar uma função em JavaScript para que o texto digitado no segundo campo seja aplicado como cor de destaque no primeiro campo. Aqui está o código atualizado:
+Claro! Vou atualizar o código para que, ao digitar no segundo campo, as palavras que correspondem ao texto do primeiro campo sejam destacadas com uma cor diferente. Aqui está o código atualizado:
  
  
 <!DOCTYPE html>
@@ -28,8 +28,25 @@ Claro! Vou adicionar uma função em JavaScript para que o texto digitado no seg
   
   <script>
     function aplicarCor() {
-      var cor = document.getElementById("campo-digitacao").value;
-      document.getElementById("campo-css").style.color = cor;
+      var texto1 = document.getElementById("campo-css").value;
+      var texto2 = document.getElementById("campo-digitacao").value;
+      
+      var palavras1 = texto1.split(/\s+/);
+      
+      var textoFormatado = "";
+      
+      for (var i = 0; i < palavras1.length; i++) {
+        var palavra1 = palavras1[i];
+        var cor = "";
+        
+        if (texto2.includes(palavra1)) {
+          cor = "red";
+        }
+        
+        textoFormatado += "<span style='color: " + cor + "'>" + palavra1 + "</span> ";
+      }
+      
+      document.getElementById("campo-css").innerHTML = textoFormatado;
     }
   </script>
 </head>
@@ -38,14 +55,14 @@ Claro! Vou adicionar uma função em JavaScript para que o texto digitado no seg
   
   <label for="campo-css">Propriedades do CSS:</label>
   <br>
-  <textarea id="campo-css" readonly>
+  <div id="campo-css">
     width: 300px;
     height: 100px;
     border: 1px solid black;
     padding: 10px;
     font-family: Arial, sans-serif;
     font-size: 16px;
-  </textarea>
+  </div>
   
   <br><br>
   
@@ -56,4 +73,4 @@ Claro! Vou adicionar uma função em JavaScript para que o texto digitado no seg
 </html>
  
  
-Agora, quando você digitar algo no segundo campo e sair do campo (ou pressionar Enter), a cor digitada será aplicada como cor de destaque no primeiro campo. Experimente digitar uma cor como "red" ou "#00ff00" e veja o resultado.
+Agora, quando você digitar algo no segundo campo, as palavras que correspondem ao texto do primeiro campo serão destacadas em vermelho. Experimente digitar palavras que estão no primeiro campo e veja o resultado.
