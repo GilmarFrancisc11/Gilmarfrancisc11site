@@ -1,3 +1,6 @@
+Entendi! Você gostaria de criar um segundo campo onde possa digitar o mesmo conteúdo que está no primeiro campo, e se o conteúdo digitado no segundo campo for igual ao do primeiro, a cor do primeiro campo deve mudar. Aqui está um exemplo de como você pode fazer isso em HTML e JavaScript:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,6 +13,11 @@
       padding: 10px;
       color: green;
     }
+
+    .user-input {
+      border: 1px solid #000;
+      padding: 10px;
+    }
   </style>
 </head>
 <body>
@@ -19,8 +27,33 @@
     <h2>Exercício:</h2>
     <p>Digite o código PHP abaixo para imprimir "Olá, mundo!"</p>
 
-    <div class="readonly-code">&lt;?php echo "Olá, mundo!"; ?&gt;</div>
+    <div class="readonly-code" id="originalCode">&lt;?php echo "Olá, mundo!"; ?&gt;</div>
+
+    <h2>Escreva o código PHP:</h2>
+
+    <input type="text" id="userInput" class="user-input" oninput="checkCode()">
+
   </div>
+
+  <script>
+    function checkCode() {
+      var originalCode = document.getElementById('originalCode').innerText.trim();
+      var userInput = document.getElementById('userInput').value.trim();
+
+      if (userInput === originalCode) {
+        document.getElementById('originalCode').style.color = 'blue';
+      } else {
+        document.getElementById('originalCode').style.color = 'green';
+      }
+    }
+  </script>
 
 </body>
 </html>
+```
+
+Neste exemplo, adicionamos um segundo campo de entrada (`<input>`) onde você pode digitar o código PHP. Utilizamos JavaScript para comparar o conteúdo digitado com o conteúdo original e alterar a cor do primeiro campo conforme necessário.
+
+Agora, quando você digitar o mesmo conteúdo que está no primeiro campo no segundo campo, a cor do primeiro campo mudará para azul.
+
+Espero que este exemplo atenda às suas necessidades! Se precisar de mais alguma coisa ou tiver outras perguntas, estou à disposição para ajudar!
