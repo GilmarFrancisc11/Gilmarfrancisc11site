@@ -29,7 +29,7 @@ if (!$conexao) {
         </div>
         <div style="flex: 1; padding-left: 20px;">
             <h2 style="color: green;">Pratique seu Código Aqui:</h2>
-            <textarea id="praticar-codigo" rows="10" cols="50" oninput="atualizarCodigoExemplo()"></textarea>
+            <textarea id="praticar-codigo" rows="10" cols="50" oninput="atualizarTextoDigitado()"></textarea>
         </div>
         <div style="flex: 1; padding-left: 20px;">
             <h2>Texto Digitado:</h2>
@@ -38,15 +38,11 @@ if (!$conexao) {
     </div>
 
     <script>
-        function atualizarCodigoExemplo() {
+        function atualizarTextoDigitado() {
             const texto = document.getElementById('praticar-codigo').value;
             const textoDigitado = document.getElementById('texto-digitado');
 
-            // Atualiza o conteúdo do exemplo com o código original
-            const codigoOriginal = '&lt;?php\n// Definição das informações de conexão\n$servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")\n$usuario = "root"; // Nome de usuário do banco de dados\n$senha = ""; // Senha do banco de dados\n$dbname = "db_trailerv1.0"; // Nome do banco de dados que você deseja se conectar\n\n// Conexão com o banco de dados\n$conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);\n\n// Verificação da conexão\nif (!$conexao) {\n    die("Conexão falhou: " . mysqli_connect_error());\n}\n?&gt;';
-            const textoFormatado = codigoOriginal + '\n\n// Texto Digitado:\n' + texto;
-
-            textoDigitado.innerText = textoFormatado;
+            textoDigitado.innerText = texto;
         }
     </script>
 </body>
