@@ -38,11 +38,16 @@
         function destacarSintaxe() {
             const texto = document.getElementById('praticar-codigo').value;
             const codigoPhp = document.getElementById('codigo-php');
+            const codigoOriginal = codigoPhp.innerText.split('\n').slice(1).join('<br>');
 
-            let textoFormatado = codigoPhp.innerHTML.split('<br>')[0] + '<br>'; // Mantém a primeira linha do código PHP
+            let textoFormatado = '<strong>Código PHP de Exemplo:</strong><br>' + codigoOriginal;
 
             for (let i = 0; i < texto.length; i++) {
-                textoFormatado += '<span style="color: green;">' + texto[i] + '</span>';
+                if (/[a-zA-Z]/.test(texto[i])) {
+                    textoFormatado += '<span style="color: blue;">' + texto[i] + '</span>';
+                } else {
+                    textoFormatado += texto[i];
+                }
             }
 
             codigoPhp.innerHTML = textoFormatado;
