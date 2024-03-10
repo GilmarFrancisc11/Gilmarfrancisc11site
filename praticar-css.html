@@ -1,4 +1,4 @@
-Compreendi! Aqui está uma versão atualizada do exemplo, onde removi o botão "Aplicar", aumentei o tamanho do segundo campo e a seleção é feita por palavra correspondente:
+Compreendi! Aqui está uma versão atualizada do exemplo, onde as palavras correspondentes no primeiro campo ficam verdes:
  
  
 <!DOCTYPE html>
@@ -111,6 +111,19 @@ Compreendi! Aqui está uma versão atualizada do exemplo, onde removi o botão "
                         }
                     }
                 }
+
+                var words = cssProperties.split(/\W+/);
+                var typingTextContent = typingText.textContent;
+
+                for (var i = 0; i < words.length; i++) {
+                    var word = words[i].trim();
+                    if (word !== '') {
+                        var regex = new RegExp("\\b" + word + "\\b", "gi");
+                        typingTextContent = typingTextContent.replace(regex, '<span style="color: green;">' + word + '</span>');
+                    }
+                }
+
+                typingText.innerHTML = typingTextContent;
             });
         };
     </script>
@@ -118,6 +131,6 @@ Compreendi! Aqui está uma versão atualizada do exemplo, onde removi o botão "
 </html>
  
  
-Nesta versão atualizada, removi o botão "Aplicar" e aumentei o tamanho do segundo campo usando o elemento  <textarea> . Agora você pode digitar o seletor CSS em várias linhas, onde cada palavra correspondente será selecionada.
+Nesta versão atualizada, adicionei um código JavaScript adicional para percorrer as palavras no primeiro campo e, se houver correspondência com as palavras no seletor CSS, as palavras correspondentes ficarão verdes. Isso é feito adicionando um  <span>  com estilo de cor verde em torno das palavras correspondentes.
  
 Espero que isso atenda às suas necessidades! Se você tiver mais dúvidas, é só me perguntar.
