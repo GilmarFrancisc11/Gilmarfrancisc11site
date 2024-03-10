@@ -66,8 +66,23 @@
         <p>Insira o código PHP abaixo:</p>
         <form>
             <textarea name="code" rows="10" cols="50"><?php
-              oi
-                echo "?>";
+              <?php
+
+include("conexao.php");
+
+
+$usuario = $_POST['username'];
+$senha = $_POST['password'];
+
+$sql = "INSERT INTO db_users (username, senha) values ('$usuario', '$senha')";
+
+if(mysqli_query($conexao, $sql)) {
+    echo 'cadstrado com sucesso';
+} 
+
+
+?>
+
             ?></textarea>
             <br>
             <input type="submit" value="Testar Código">
