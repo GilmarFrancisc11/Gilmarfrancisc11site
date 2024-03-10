@@ -6,9 +6,10 @@
     <title>Prática de Código PHP com Destaque de Sintaxe</title>
 </head>
 <body>
-    <div>
-        <h2>Código PHP de Exemplo:</h2>
-        <pre id="codigo-php" style="white-space: pre-wrap; color: green;">
+    <div style="display: flex;">
+        <div style="flex: 1;">
+            <h2>Código PHP de Exemplo:</h2>
+            <pre id="codigo-php" style="white-space: pre-wrap; color: green;">
 &lt;?php
 // Definição das informações de conexão
 $servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")
@@ -24,25 +25,28 @@ if (!$conexao) {
     die("Conexão falhou: " . mysqli_connect_error());
 }
 ?&gt;
-        </pre>
-    </div>
-    <div style="margin-top: 20px;">
-        <h2 style="color: green;">Pratique seu Código Aqui:</h2>
-        <textarea id="praticar-codigo" rows="10" cols="50" oninput="destacarSintaxe()"></textarea>
+            </pre>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <h2 style="color: green;">Pratique seu Código Aqui:</h2>
+            <textarea id="praticar-codigo" rows="10" cols="50" oninput="atualizarCodigoExemplo()"></textarea>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <h2>Texto Digitado:</h2>
+            <div id="texto-digitado" style="white-space: pre-wrap;"></div>
+        </div>
     </div>
 
     <script>
-        function destacarSintaxe() {
+        function atualizarCodigoExemplo() {
             const texto = document.getElementById('praticar-codigo').value;
-            const codigoExemplo = document.getElementById('codigo-php');
+            const textoDigitado = document.getElementById('texto-digitado');
 
             // Atualiza o conteúdo do exemplo com o código original
-            const codigoOriginal = codigoExemplo.innerText.trim();
-            codigoExemplo.innerHTML = codigoOriginal;
+            const codigoOriginal = '&lt;?php\n// Definição das informações de conexão\n$servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")\n$usuario = "root"; // Nome de usuário do banco de dados\n$senha = ""; // Senha do banco de dados\n$dbname = "db_trailerv1.0"; // Nome do banco de dados que você deseja se conectar\n\n// Conexão com o banco de dados\n$conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);\n\n// Verificação da conexão\nif (!$conexao) {\n    die("Conexão falhou: " . mysqli_connect_error());\n}\n?&gt;';
+            const textoFormatado = codigoOriginal + '\n\n// Texto Digitado:\n' + texto;
 
-            // Adiciona o texto digitado abaixo do exemplo
-            const textoFormatado = '<br>' + texto.replace(/\n/g, '<br>');
-            codigoExemplo.innerHTML += textoFormatado;
+            textoDigitado.innerText = textoFormatado;
         }
     </script>
 </body>
