@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto PHP em Input</title>
+</head>
+<body>
+    <label for="phpCode">Código PHP:</label><br>
+    <textarea id="phpCode" name="phpCode" rows="10" cols="50"><?php
+        include("conexao.php");
+
+        $usuario = $_POST['username'];
+        $senha = $_POST['password'];
+
+        $sql = "INSERT INTO db_users (username, senha) values ('$usuario', '$senha')";
+
+        if(mysqli_query($conexao, $sql)) {
+            echo 'cadastrado com sucesso';
+        } 
+    ?></textarea>
+</body>
+</html>
