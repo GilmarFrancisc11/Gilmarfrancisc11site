@@ -22,19 +22,25 @@
             width: 45%;
             float: left;
         }
+        .resultado {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
     <h1>Exercício de CSS</h1>
     <div class="propriedades">
         <h2>Propriedades CSS:</h2>
-        <ul>
-            <li>color</li>
-            <li>font-size</li>
-            <li>background-color</li>
-            <li>padding</li>
-            <li>margin</li>
-            <li>border</li>
+        <ul id="listaPropriedades">
+            <li style="color: black;">color</li>
+            <li style="font-size: 16px;">font-size</li>
+            <li style="background-color: white;">background-color</li>
+            <li style="padding: 10px;">padding</li>
+            <li style="margin: 10px;">margin</li>
+            <li style="border: 1px solid black;">border</li>
             <!-- Adicione mais propriedades conforme necessário -->
         </ul>
     </div>
@@ -42,5 +48,34 @@
         <h2>Digite as Propriedades CSS:</h2>
         <textarea id="propriedadesUsuario" rows="6" cols="50"></textarea>
     </div>
+    <div class="resultado" id="resultado">
+        <h2>Resultado:</h2>
+        <p>As propriedades serão aplicadas aqui.</p>
+    </div>
+
+    <script>
+        // Função para aplicar as propriedades CSS
+        function aplicarPropriedades() {
+            const propriedadesUsuario = document.getElementById('propriedadesUsuario').value;
+            const listaPropriedades = document.getElementById('listaPropriedades').children;
+
+            const propriedadesArray = propriedadesUsuario.split(';');
+
+            propriedadesArray.forEach(propriedade => {
+                const partes = propriedade.split(':');
+                const nomePropriedade = partes[0].trim();
+                const valorPropriedade = partes[1].trim();
+
+                for (let i = 0; i < listaPropriedades.length; i++) {
+                    if (listaPropriedades[i].textContent.trim() === nomePropriedade) {
+                        listaPropriedades[i].style.setProperty(nomePropriedade, valorPropriedade);
+                    }
+                }
+            });
+        }
+
+        // Adicionando evento de mudança no campo de entrada
+        document.getElementById('propriedadesUsuario').addEventListener('input', aplicarPropriedades);
+    </script>
 </body>
 </html>
