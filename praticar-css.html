@@ -21,6 +21,11 @@
       font-family: Arial, sans-serif;
       font-size: 16px;
     }
+    
+    /* Estilo para as palavras marcadas */
+    .marcado {
+      color: green;
+    }
   </style>
   
   <script>
@@ -28,7 +33,7 @@
       var texto1 = document.getElementById("campo-css").value;
       var texto2 = document.getElementById("campo-digitacao").value;
       
-      var palavras1 = texto1.split(/\s+/);
+      var palavras1 = texto1.split(/;\s+/);
       
       var textoFormatado = "";
       
@@ -36,11 +41,11 @@
         var palavra1 = palavras1[i];
         var cor = "";
         
-        if (texto2.includes(palavra1)) {
-          cor = "red";
+        if (texto2.includes(palavra1.trim())) {
+          cor = "marcado";
         }
         
-        textoFormatado += palavra1 + " ";
+        textoFormatado += "<span class='" + cor + "'>" + palavra1 + ";</span><br>";
       }
       
       document.getElementById("campo-css").innerHTML = textoFormatado;
