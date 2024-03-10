@@ -1,4 +1,4 @@
-Entendi! Aqui está uma versão atualizada do exemplo, onde a cor de fundo dos elementos selecionados é automaticamente definida com base no seletor CSS inserido:
+Entendi! Aqui está uma versão atualizada do exemplo, onde você pode digitar um seletor CSS no segundo campo e, se o seletor corresponder a um elemento no primeiro campo, a cor de cada propriedade CSS será alterada:
  
  
 <!DOCTYPE html>
@@ -101,26 +101,26 @@ Entendi! Aqui está uma versão atualizada do exemplo, onde a cor de fundo dos e
 
                 for (var i = 0; i < elements.length; i++) {
                     elements[i].classList.add('selected');
-                    elements[i].style.backgroundColor = getRandomColor();
+                    var properties = cssProperties.split(';');
+                    for (var j = 0; j < properties.length; j++) {
+                        var property = properties[j].trim();
+                        if (property !== '') {
+                            var colonIndex = property.indexOf(':');
+                            var propertyName = property.substring(0, colonIndex).trim();
+                            var propertyValue = property.substring(colonIndex + 1).trim();
+                            elements[i].style[propertyName] = propertyValue;
+                        }
+                    }
                 }
             });
-
-            function getRandomColor() {
-                var letters = '0123456789ABCDEF';
-                var color = '#';
-                for (var i = 0; i < 6; i++) {
-                    color += letters[Math.floor(Math.random() * 16)];
-                }
-                return color;
-            }
         };
     </script>
 </body>
 </html>
  
  
-Nesta versão atualizada, adicionei uma função  getRandomColor()  que gera uma cor aleatória em formato hexadecimal. Quando um elemento é selecionado, a cor de fundo é definida como uma cor aleatória usando essa função.
+Nesta versão atualizada, as propriedades CSS do primeiro campo são divididas em uma lista de propriedades separadas. Em seguida, cada propriedade é aplicada aos elementos selecionados com base no seletor do segundo campo.
  
-Dessa forma, cada elemento selecionado terá sua própria cor de fundo aleatória.
+Dessa forma, se o seletor corresponder a um elemento no primeiro campo, as propriedades CSS correspondentes serão aplicadas a esses elementos.
  
 Espero que isso atenda às suas necessidades! Se você tiver mais dúvidas, é só me perguntar.
