@@ -39,7 +39,7 @@
       var texto1 = document.getElementById("campo-css").value;
       var texto2 = document.getElementById("campo-digitacao").value;
       
-      var palavras1 = texto1.split(/;\s+/);
+      var palavras1 = texto1.split(/\n/);
       
       var textoFormatado = "";
       
@@ -51,7 +51,7 @@
           cor = "marcado";
         }
         
-        textoFormatado += "<span class='" + cor + "'>" + palavra1 + ";</span><br>";
+        textoFormatado += "<span class='" + cor + "'>" + palavra1 + "</span><br>";
       }
       
       document.getElementById("campo-css").innerHTML = textoFormatado;
@@ -72,7 +72,14 @@
   
   <label for="campo-css">Propriedades do CSS:</label>
   <br>
-  <div id="campo-css"></div>
+  <textarea id="campo-css" readonly>
+    width: 300px;
+    height: 100px;
+    border: 1px solid black;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  </textarea>
   
   <br><br>
   
