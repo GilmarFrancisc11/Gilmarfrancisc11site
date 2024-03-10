@@ -5,25 +5,30 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="code">
-    <span>&lt;?php</span><br>
-    <span>$servidor</span> = "<span>seu_servidor</span>";<br>
-    <span>$usuario</span> = "<span>seu_usuario</span>";<br>
-    <span>$senha</span> = "<span>sua_senha</span>";<br>
-    <span>$banco</span> = "<span>seu_banco_de_dados</span>";<br><br>
+  <div class="code-container">
+    <div class="code-overlay">
+      Seu texto de treinamento aqui
+    </div>
+    <div class="code">
+      <?php
+      $servidor = "seu_servidor";
+      $usuario = "seu_usuario";
+      $senha = "sua_senha";
+      $banco = "seu_banco_de_dados";
 
-    <span>// Estabelecer a conexão</span><br>
-    <span>$conexao</span> = <span>mysqli_connect</span>(<span>$servidor</span>, <span>$usuario</span>, <span>$senha</span>, <span>$banco</span>);<br>
+      // Estabelecer a conexão
+      $conexao = mysqli_connect($servidor, $usuario, $senha, $banco);
 
-    <span>// Verificar a conexão</span><br>
-    <span>if</span> (!<span>$conexao</span>) {<br>
-      &nbsp;&nbsp;<span>die</span>("Conexão falhou: " . <span>mysqli_connect_error</span>());<br>
-    }<br>
-    <span>echo</span> "Conexão bem-sucedida";<br>
+      // Verificar a conexão
+      if (!$conexao) {
+          die("Conexão falhou: " . mysqli_connect_error());
+      }
+      echo "Conexão bem-sucedida";
 
-    <span>// Fechar a conexão (não é estritamente necessário, pois o PHP fecha automaticamente a conexão ao final do script)</span><br>
-    <span>mysqli_close</span>(<span>$conexao</span>);<br>
-    ?&gt;
+      // Fechar a conexão (não é estritamente necessário, pois o PHP fecha automaticamente a conexão ao final do script)
+      mysqli_close($conexao);
+      ?>
+    </div>
   </div>
 </body>
 </html>
