@@ -1,55 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .code span {
-      color: green;
-    }
-    #editor {
-      width: 100%;
-      height: 200px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      box-sizing: border-box;
-      font-family: monospace;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações de Conexão</title>
 </head>
 <body>
-  <div class="code">
-    <span>&lt;?php</span><br>
-    <span>$servidor</span> = "<span>seu_servidor</span>";<br>
-    <span>$usuario</span> = "<span>seu_usuario</span>";<br>
-    <span>$senha</span> = "<span>sua_senha</span>";<br>
-    <span>$banco</span> = "<span>seu_banco_de_dados</span>";<br><br>
-
-    <span>// Estabelecer a conexão</span><br>
-    <span>$conexao</span> = <span>mysqli_connect</span>(<span>$servidor</span>, <span>$usuario</span>, <span>$senha</span>, <span>$banco</span>);<br>
-
-    <span>// Verificar a conexão</span><br>
-    <span>if</span> (!<span>$conexao</span>) {<br>
-      &nbsp;&nbsp;<span>die</span>("Conexão falhou: " . <span>mysqli_connect_error</span>());<br>
-    }<br>
-    <span>echo</span> "Conexão bem-sucedida";<br>
-
-    <span>// Fechar a conexão (não é estritamente necessário, pois o PHP fecha automaticamente a conexão ao final do script)</span><br>
-    <span>mysqli_close</span>(<span>$conexao</span>);<br>
-    ?&gt;
-  </div>
-
-  <textarea id="editor" placeholder="Escreva seu código PHP aqui"></textarea>
-
-  <script>
-    // Adiciona um editor de código usando o library Ace
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
-    editor.session.setMode("ace/mode/php");
-  </script>
-
-  <!-- Adicione a biblioteca Ace -->
-  <script src="https://pagecdn.io/lib/ace/1.4.12/ace.js" integrity="sha384-0v5j2K7g9LwDZbqEIIjJjCmGvq5VtV9xX6Y9fK4lT5F4mRTxhL3KkS7n5P9kE8F2" crossorigin="anonymous"></script>
-  
+    <h1>Informações de Conexão PHP</h1>
+    <p>&lt;?php</p>
+    <p>// Definição das informações de conexão</p>
+    <p>$servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")</p>
+    <p>$usuario = "root"; // Nome de usuário do banco de dados</p>
+    <p>$senha = ""; // Senha do banco de dados</p>
+    <p>$dbname = "db_trailerv1.0"; // Nome do banco de dados que você deseja se conectar</p>
+    <p>// Conexão com o banco de dados</p>
+    <p>$conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);</p>
+    <p>// Verificação da conexão</p>
+    <p>if (!$conexao) {</p>
+    <p>    die("Conexão falhou: " . mysqli_connect_error());</p>
+    <p>}</p>
+    <p>?&gt;</p>
 </body>
 </html>
