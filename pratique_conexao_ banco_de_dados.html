@@ -3,48 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prática de Conexão PHP</title>
+    <title>Prática de Código PHP com Destaque de Sintaxe</title>
 </head>
 <body>
     <div style="display: flex;">
         <div style="flex: 1;">
             <h2>Código PHP de Conexão:</h2>
-            <textarea id="codigo-php" rows="10" cols="50" readonly>
-<?php
-// Definição das informações de conexão
-$servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")
-$usuario = "root"; // Nome de usuário do banco de dados
-$senha = ""; // Senha do banco de dados
-$dbname = "db_trailerv1.0"; // Nome do banco de dados que você deseja se conectar
+            <p id="codigo-php" style="color: blue;">
+                <?php
+                // Definição das informações de conexão
+                $servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")
+                $usuario = "root"; // Nome de usuário do banco de dados
+                $senha = ""; // Senha do banco de dados
+                $dbname = "db_trailerv1.0"; // Nome do banco de dados que você deseja se conectar
 
-// Conexão com o banco de dados
-$conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
+                // Conexão com o banco de dados
+                $conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
 
-// Verificação da conexão
-if (!$conexao) {
-    die("Conexão falhou: " . mysqli_connect_error());
-}
-?>
-            </textarea>
+                // Verificação da conexão
+                if (!$conexao) {
+                    die("<span style='color: red;'>Conexão falhou:</span> " . mysqli_connect_error());
+                }
+                ?>
+            </p>
         </div>
         <div style="flex: 1; padding-left: 20px;">
             <h2>Pratique seu Código Aqui:</h2>
-            <textarea id="praticar-codigo" rows="10" cols="50" oninput="testarConexao()"></textarea>
-            <p id="conexao-status"></p>
+            <textarea id="praticar-codigo" rows="10" cols="50" oninput="destacarSintaxe()"></textarea>
         </div>
     </div>
 
     <script>
-        function testarConexao() {
-            const codigoPraticado = document.getElementById('praticar-codigo').value;
+        function destacarSintaxe() {
+            const texto = document.getElementById('praticar-codigo').value;
+            const codigoPhp = document.getElementById('codigo-php');
 
-            // Tenta executar o código de conexão praticado
-            try {
-                eval('<?php ' + codigoPraticado + ' ?>');
-                document.getElementById('conexao-status').innerText = 'Conexão bem sucedida!';
-            } catch (error) {
-                document.getElementById('conexao-status').innerText = 'Erro na conexão: ' + error.message;
+            let textoFormatado = '';
+
+            for (let i = 0; i < texto.length; i++) {
+                if (/[a-zA-Z.,;!? ]/.test(texto[i])) {
+                    textoFormatado += '<span style="color: blue;">' + texto[i] + '</span>';
+                } else {
+                    textoFormatado += texto[i];
+                }
             }
+
+            codigoPhp.innerHTML = textoFormatado;
         }
     </script>
 </body>
