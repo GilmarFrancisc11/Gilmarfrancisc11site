@@ -9,13 +9,25 @@
     <div style="display: flex;">
         <div style="flex: 1;">
             <h2>Código PHP de Exemplo:</h2>
-            <p id="codigo-php" style="color: blue;">
-                <?php
-                // Exemplo de código PHP
-                $mensagem = "Olá, mundo!";
-                echo $mensagem;
-                ?>
-            </p>
+            <pre id="codigo-php" style="color: blue;">
+&lt;?php
+
+// Definição das informações de conexão
+$servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")
+$usuario = "root"; // Nome de usuário do banco de dados
+$senha = ""; // Senha do banco de dados
+$dbname = "db_trailerv1.0"; // Nome do banco de dados que você deseja se conectar
+
+// Conexão com o banco de dados
+$conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
+
+// Verificação da conexão
+if (!$conexao) {
+    die("Conexão falhou: " . mysqli_connect_error());
+}
+
+?&gt;
+            </pre>
         </div>
         <div style="flex: 1; padding-left: 20px;">
             <h2>Pratique seu Código Aqui:</h2>
