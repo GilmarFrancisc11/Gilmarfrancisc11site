@@ -1,4 +1,4 @@
-Compreendi! Aqui está uma versão atualizada do exemplo, onde as palavras correspondentes no segundo campo ficam verdes e a cor é aplicada em ordem à medida que você digita no primeiro campo:
+Peço desculpas pela confusão. Parece que houve um erro na minha resposta anterior. Vou corrigir o código para garantir que a cor seja aplicada corretamente. Aqui está a versão atualizada do exemplo:
  
  
 <!DOCTYPE html>
@@ -94,7 +94,7 @@ Compreendi! Aqui está uma versão atualizada do exemplo, onde as palavras corre
             cssPropertiesTextarea.addEventListener('input', function() {
                 var cssPropertiesValue = cssPropertiesTextarea.value;
                 var selector = cssSelectorTextarea.value;
-                var words = cssPropertiesValue.split(/[:\s]+/);
+                var words = cssPropertiesValue.split(/[:;\s]+/);
 
                 var typingTextContent = typingText.textContent;
 
@@ -139,6 +139,6 @@ Compreendi! Aqui está uma versão atualizada do exemplo, onde as palavras corre
 </html>
  
  
-Nesta versão atualizada, adicionei um evento de escuta de  input  ao campo de texto das propriedades CSS ( css-properties ). Assim, toda vez que você digitar no campo, o código JavaScript será acionado e as palavras correspondentes serão destacadas em verde no texto digitado. Além disso, as propriedades CSS serão aplicadas aos elementos correspondentes no documento.
+Nesta versão atualizada, atualizei a expressão regular usada para dividir as palavras no primeiro campo ( css-properties ). Agora, as palavras são divididas usando  /[:;\s]+/ , que considera dois pontos, ponto e vírgula e espaços como separadores. Isso garante que cada palavra seja considerada corretamente.
  
-Espero que isso atenda às suas necessidades! Se você tiver mais dúvidas, é só me perguntar.
+Espero que isso resolva o problema! Se você tiver mais dúvidas, é só me perguntar.
