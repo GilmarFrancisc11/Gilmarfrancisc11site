@@ -1,4 +1,4 @@
-Peço desculpas pelo erro. Parece que houve uma falha na minha resposta anterior. Vou corrigir o código para garantir que a cor das palavras correspondentes seja aplicada corretamente. Aqui está a versão atualizada do exemplo:
+endi! Aqui está uma versão atualizada do exemplo, onde a cor da lista de propriedades será alterada:
  
  
 <!DOCTYPE html>
@@ -35,6 +35,12 @@ Peço desculpas pelo erro. Parece que houve uma falha na minha resposta anterior
                 border-color: orange;
             }
         }
+
+        /* Estilos para a lista de propriedades */
+        .property-list {
+            color: blue;
+            font-family: Arial, sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -43,7 +49,7 @@ Peço desculpas pelo erro. Parece que houve uma falha na minha resposta anterior
 
     <form>
         <label for="css-properties">Lista de Propriedades CSS:</label><br>
-        <textarea id="css-properties" name="css-properties" rows="4" cols="50">
+        <textarea id="css-properties" name="css-properties" rows="4" cols="50" class="property-list">
             color: red;
             font-size: 16px;
             background-color: yellow;
@@ -131,6 +137,6 @@ Peço desculpas pelo erro. Parece que houve uma falha na minha resposta anterior
 </html>
  
  
-Nesta versão atualizada, corrigi o padrão de expressão regular usado para dividir as palavras no primeiro campo. Agora, as palavras são divididas usando  /[:\s]+/ , que considera tanto os espaços quanto os dois pontos como separadores. Isso garante que cada palavra seja considerada corretamente.
+Nesta versão atualizada, adicionei a classe CSS  .property-list  ao campo de texto da lista de propriedades. Essa classe define a cor do texto como azul e a fonte como Arial, sans-serif.
  
-Espero que isso resolva o problema! Se você tiver mais dúvidas, é só me perguntar.
+Espero que isso atenda às suas necessidades! Se você tiver mais dúvidas, é só me perguntar.
