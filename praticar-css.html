@@ -40,7 +40,7 @@
     </div>
     <div class="entrada">
         <h2>Digite as Propriedades CSS:</h2>
-        <textarea id="propriedadesUsuario" rows="6" cols="50" oninput="atualizarPropriedades()"></textarea>
+        <textarea id="propriedadesUsuario" rows="6" cols="50" onkeyup="atualizarPropriedades()"></textarea>
     </div>
 
     <script>
@@ -71,22 +71,22 @@
             var propriedadesInput = document.getElementById("propriedadesUsuario").value;
             var propriedadesLista = document.getElementById("listaPropriedades");
 
-            // Atualiza as cores das letras e verifica se o texto está correto
-            for (var i = 0; i < propriedadesLista.childNodes.length; i++) {
-                var propriedadeNode = propriedadesLista.childNodes[i];
-                var propriedade = propriedadeNode.innerText;
+            var propriedades = propriedadesLista.getElementsByTagName("li");
+
+            for (var i = 0; i < propriedades.length; i++) {
+                var propriedade = propriedades[i].innerText;
+                var novaPropriedade = propriedadesInput.substring(0, propriedade.length);
+                var restoPropriedade = propriedadesInput.substring(propriedade.length);
 
                 var novoHTML = "";
-                for (var k = 0; k < propriedade.length; k++) {
-                    var cor = "black"; // Cor padrão
-                    if (propriedadesInput[k] === propriedade[k]) {
-                        cor = "green"; // Se a letra é igual, cor verde
+                for (var j = 0; j < novaPropriedade.length; j++) {
+                    if (novaPropriedade[j] === propriedade[j]) {
+                        novoHTML += "<span class='cor-verde'>" + novaPropriedade[j] + "</span>";
                     } else {
-                        cor = "red"; // Se a letra é diferente, cor vermelha
+                        novoHTML += "<span class='cor-vermelha'>" + novaPropriedade[j] + "</span>";
                     }
-                    novoHTML += "<span style='color:" + cor + ";'>" + propriedade[k] + "</span>";
                 }
-                propriedadeNode.innerHTML = novoHTML;
+                propriedades[i].innerHTML = novoHTML + restoPropriedade;
             }
         }
     </script>
