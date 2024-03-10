@@ -39,7 +39,7 @@
             const texto = document.getElementById('praticar-codigo').value;
             const codigoPhp = document.getElementById('codigo-php');
 
-            let textoFormatado = '<strong>Código PHP de Exemplo:</strong><br>';
+            let textoFormatado = codigoPhp.innerHTML.split('<br>')[0] + '<br>'; // Mantém a primeira linha do código PHP
 
             for (let i = 0; i < texto.length; i++) {
                 textoFormatado += '<span style="color: green;">' + texto[i] + '</span>';
