@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -36,22 +35,23 @@ if (!$conexao) {
 
     <script>
         function destacarSintaxe() {
-            const texto = document.getElementById('praticar-codigo').value;
+            const texto = document.getElementById('praticar-codigo').value.split(/\b/); // Separar por palavra
             const codigoPhp = document.getElementById('codigo-php');
             const codigoOriginal = codigoPhp.innerText.split('\n').slice(1).join('\n');
 
             let textoFormatado = '&lt;?php\n';
+            let posicaoTexto = 0;
 
-            for (let i = 0; i < texto.length; i++) {
-                if (/[a-zA-Z]/.test(texto[i])) {
-                    textoFormatado += '<span style="color: blue;">' + texto[i] + '</span>';
+            for (let i = 0; i < codigoOriginal.length; i++) {
+                if (codigoOriginal[i] === ' ') {
+                    textoFormatado += texto[posicaoTexto++] || ''; // Adicionar a próxima palavra
                 } else {
-                    textoFormatado += texto[i];
+                    textoFormatado += codigoOriginal[i];
                 }
             }
 
             textoFormatado += '\n?&gt;';
-            codigoPhp.innerHTML = textoFormatado + codigoOriginal;
+            codigoPhp.innerHTML = textoFormatado;
         }
     </script>
 </body>
