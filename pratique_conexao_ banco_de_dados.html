@@ -1,6 +1,6 @@
-Entendi! Para permitir que você escreva em cima das palavras enquanto pratica a digitação, podemos usar a propriedade CSS  position: absolute  para posicionar um elemento de texto sobre a palavra.
+Entendi! Para permitir que você digite diretamente na palavra exibida, podemos substituir a label por um elemento  <span>  e adicionar um evento de clique para habilitar a edição.
  
-Aqui está o código HTML atualizado com essa funcionalidade:
+Aqui está o código HTML atualizado para permitir a edição direta da palavra:
  
  
 <!DOCTYPE html>
@@ -15,18 +15,12 @@ Aqui está o código HTML atualizado com essa funcionalidade:
         #word-container {
             margin-bottom: 20px;
             position: relative;
+            cursor: text;
         }
         
         #word {
             font-size: 24px;
             font-weight: bold;
-        }
-        
-        #input-word {
-            font-size: 24px;
-            padding: 5px;
-            margin-top: 10px;
-            width: 300px;
         }
         
         #typed-word {
@@ -48,7 +42,6 @@ Aqui está o código HTML atualizado com essa funcionalidade:
     
     <div id="word-container">
         <span id="word">Digite uma palavra:</span>
-        <input type="text" id="input-word" autofocus>
         <span id="typed-word"></span>
     </div>
     
@@ -56,7 +49,6 @@ Aqui está o código HTML atualizado com essa funcionalidade:
     
     <script>
         const wordContainer = document.getElementById('word');
-        const inputWord = document.getElementById('input-word');
         const typedWord = document.getElementById('typed-word');
         const result = document.getElementById('result');
         let currentWord = '';
@@ -69,25 +61,28 @@ Aqui está o código HTML atualizado com essa funcionalidade:
         
         function updateWord() {
             currentWord = getRandomWord();
-            wordContainer.textContent = 'Digite a palavra:';
-            wordContainer.appendChild(typedWord);
-            wordContainer.appendChild(document.createTextNode(currentWord));
-            inputWord.value = '';
-            inputWord.focus();
+            wordContainer.textContent = currentWord;
+            typedWord.textContent = '';
+            wordContainer.addEventListener('click', enableEdit);
+        }
+        
+        function enableEdit() {
+            wordContainer.removeEventListener('click', enableEdit);
+            typedWord.textContent = currentWord;
+            typedWord.contentEditable = true;
+            typedWord.focus();
         }
         
         function checkWord() {
-            const typedText = inputWord.value.trim();
+            const typedText = typedWord.textContent.trim();
             
             if (typedText === currentWord) {
                 result.textContent = 'Correto! Digite outra palavra.';
                 updateWord();
-            } else {
-                typedWord.textContent = typedText;
             }
         }
         
-        inputWord.addEventListener('input', checkWord);
+        typedWord.addEventListener('input', checkWord);
         
         updateWord();
     </script>
@@ -95,6 +90,6 @@ Aqui está o código HTML atualizado com essa funcionalidade:
 </html>
  
  
-Neste código, adicionamos um novo elemento  <span>  com o id  typed-word  que será usado para exibir o texto digitado pelo usuário. Usamos a propriedade CSS  position: absolute  para posicioná-lo em cima da palavra atual.
+Neste código, removemos o elemento  <input>  e substituímos a label por um elemento  <span>  com o id  typed-word . Adicionamos um evento de clique ao elemento  wordContainer  para habilitar a edição da palavra. Quando o usuário clica na palavra, o evento  enableEdit  é acionado, permitindo que o usuário edite a palavra diretamente no local.
  
 Espero que isso atenda às suas necessidades! Se você tiver mais alguma dúvida ou precisar de mais ajustes, estou à disposição.
