@@ -1,4 +1,18 @@
- // Definição das informações de conexão
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prática de Código PHP com Destaque de Sintaxe</title>
+</head>
+<body>
+    <div style="display: flex;">
+        <div style="flex: 1;">
+            <h2>Código PHP de Exemplo:</h2>
+            <p id="codigo-php" style="white-space: pre-wrap; color: green;">
+                &lt;?php
+                <br>
+                // Definição das informações de conexão
                 $servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")
                 $usuario = "root"; // Nome de usuário do banco de dados
                 $senha = ""; // Senha do banco de dados
@@ -11,3 +25,28 @@
                 if (!$conexao) {
                     die("Conexão falhou: " . mysqli_connect_error());
                 }
+                ?&gt;
+            </p>
+        </div>
+        <div style="flex: 1; padding-left: 20px;">
+            <h2 style="color: green;">Pratique seu Código Aqui:</h2>
+            <textarea id="praticar-codigo" rows="10" cols="50" oninput="destacarSintaxe()"></textarea>
+        </div>
+    </div>
+
+    <script>
+        function destacarSintaxe() {
+            const texto = document.getElementById('praticar-codigo').value;
+            const codigoPhp = document.getElementById('codigo-php');
+
+            let textoFormatado = '<strong>Código PHP de Exemplo:</strong><br>';
+
+            for (let i = 0; i < texto.length; i++) {
+                textoFormatado += '<span style="color: green;">' + texto[i] + '</span>';
+            }
+
+            codigoPhp.innerHTML = textoFormatado;
+        }
+    </script>
+</body>
+</html>
