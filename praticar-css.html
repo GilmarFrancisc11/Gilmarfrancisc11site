@@ -57,8 +57,8 @@
       document.getElementById("campo-css").innerHTML = textoFormatado;
       
       if (inicioDigitacao) {
-        var tempoDecorrido = new Date() - inicioDigitacao;
-        var segundos = Math.floor(tempoDecorrido / 1000);
+        var tempoDecorrente = new Date() - inicioDigitacao;
+        var segundos = Math.floor(tempoDecorrente / 1000);
         var minutos = Math.floor(segundos / 60);
         segundos = segundos % 60;
         
@@ -72,14 +72,7 @@
   
   <label for="campo-css">Propriedades do CSS:</label>
   <br>
-  <textarea id="campo-css" readonly>
-    width: 300px;
-    height: 100px;
-    border: 1px solid black;
-    padding: 10px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-  </textarea>
+  <div id="campo-css"></div>
   
   <br><br>
   
@@ -90,5 +83,11 @@
   <br><br>
   
   <div id="tempo-decorrente"></div>
+  
+  <script>
+    var texto1 = document.getElementById("campo-css").innerHTML;
+    texto1 = texto1.replace(/^\s+|\s+$/g, '');
+    document.getElementById("campo-css").innerHTML = texto1;
+  </script>
 </body>
 </html>
