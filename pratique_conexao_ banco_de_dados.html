@@ -1,62 +1,86 @@
-Peço desculpas pela confusão anterior. Aqui está um exemplo de código HTML que inclui um campo de prática de digitação para o seu código de conexão com o banco de dados, onde o código está bloqueado e você pode digitar por cima dele:
+Entendi! Aqui está um exemplo de código HTML para uma página de prática de digitação sem a conexão com o banco de dados:
  
  
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Treinamento de Digitação - Conexão com Banco de Dados</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-
-    #typing-input {
-      width: 100%;
-      height: 200px;
-      font-size: 16px;
-      padding: 10px;
-    }
-  </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var typingInput = document.getElementById("typing-input");
-      var typingText = `<?php
-$servername = "localhost";
-$username = "seu_usuario";
-$password = "sua_senha";
-$dbname = "seu_banco_de_dados";
-
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-if (!$conn) {
-  die("Falha na conexão: " . mysqli_connect_error());
-}
-
-echo "Conexão com o banco de dados estabelecida com sucesso!";
-
-mysqli_close($conn);
-?>`;
-
-      typingInput.addEventListener("keydown", function(event) {
-        event.preventDefault();
-      });
-
-      typingInput.value = typingText;
-    });
-  </script>
+    <title>Praticar Digitação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        #word-container {
+            margin-bottom: 20px;
+        }
+        
+        #word {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        #input-word {
+            font-size: 24px;
+            padding: 5px;
+            margin-top: 10px;
+            width: 300px;
+        }
+        
+        #result {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Treinamento de Digitação - Conexão com Banco de Dados</h1>
-  <p>Digite o código abaixo:</p>
-  <textarea id="typing-input"></textarea>
+    <h1>Praticar Digitação</h1>
+    
+    <div id="word-container">
+        <span id="word">Digite uma palavra:</span>
+        <input type="text" id="input-word" autofocus>
+    </div>
+    
+    <div id="result"></div>
+    
+    <script>
+        const wordContainer = document.getElementById('word');
+        const inputWord = document.getElementById('input-word');
+        const result = document.getElementById('result');
+        let currentWord = '';
+        
+        function getRandomWord() {
+            const words = ['gato', 'cachorro', 'elefante', 'banana', 'computador'];
+            const randomIndex = Math.floor(Math.random() * words.length);
+            return words[randomIndex];
+        }
+        
+        function updateWord() {
+            currentWord = getRandomWord();
+            wordContainer.textContent = currentWord;
+            inputWord.value = '';
+            inputWord.focus();
+        }
+        
+        function checkWord() {
+            const typedWord = inputWord.value.trim();
+            
+            if (typedWord === currentWord) {
+                result.textContent = 'Correto! Digite outra palavra.';
+                updateWord();
+            } else {
+                result.textContent = 'Incorreto. Tente novamente.';
+            }
+        }
+        
+        inputWord.addEventListener('input', checkWord);
+        
+        updateWord();
+    </script>
 </body>
 </html>
  
  
-Neste exemplo, o código PHP de conexão com o banco de dados é definido na variável "typingText". O campo de texto  <textarea>  com o ID "typing-input" é configurado para bloquear a digitação usando o evento "keydown". Isso impede que o usuário edite diretamente o código, permitindo que você digite por cima dele.
+Este código cria uma página HTML simples com um campo de texto onde você pode digitar palavras. A cada vez que você digita uma palavra corretamente, uma nova palavra é gerada. Se você digitar uma palavra incorreta, uma mensagem de erro será exibida.
  
-Ao carregar a página, o código PHP será exibido no campo de texto, e você poderá praticar a digitação por cima dele sem modificar o código original.
+Você pode usar esse código como ponto de partida para praticar e estudar. Sinta-se à vontade para modificar e melhorar o código de acordo com suas necessidades.
  
-Espero que isso atenda às suas necessidades! Se você tiver mais alguma dúvida, estou à disposição.
+Espero que isso seja útil para você! Se tiver mais alguma dúvida, estou aqui para ajudar.
