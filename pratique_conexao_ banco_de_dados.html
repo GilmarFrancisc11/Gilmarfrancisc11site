@@ -4,13 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prática de Código PHP com Destaque de Sintaxe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        .code-container {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .code {
+            white-space: pre-wrap;
+            color: green;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
-    <div style="display: flex;">
-        <div style="flex: 1;">
+    <div class="container">
+        <div class="code-container">
             <h2>Código PHP de Exemplo:</h2>
-            <pre id="codigo-php" style="white-space: pre-wrap; color: green;">
-&lt;?php
+            <pre class="code">&lt;?php
 // Definição das informações de conexão
 $servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")
 $usuario = "root"; // Nome de usuário do banco de dados
@@ -24,19 +49,18 @@ $conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
 if (!$conexao) {
     die("Conexão falhou: " . mysqli_connect_error());
 }
-?&gt;
-            </pre>
+?&gt;</pre>
         </div>
-        <div style="flex: 1; padding-left: 20px;">
-            <h2 style="color: green;">Pratique seu Código Aqui:</h2>
-            <textarea id="praticar-codigo" rows="10" cols="50" oninput="destacarSintaxe()"></textarea>
+        <div class="code-container">
+            <h2>Pratique seu Código Aqui:</h2>
+            <textarea id="praticar-codigo" oninput="destacarSintaxe()"></textarea>
         </div>
     </div>
 
     <script>
         function destacarSintaxe() {
             const texto = document.getElementById('praticar-codigo').value.split(/\b/); // Separar por palavra
-            const codigoPhp = document.getElementById('codigo-php');
+            const codigoPhp = document.querySelector('.code');
             const codigoOriginal = codigoPhp.innerText.split('\n').slice(1).join('\n');
 
             let textoFormatado = '&lt;?php\n';
