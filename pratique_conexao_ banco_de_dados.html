@@ -1,4 +1,6 @@
-Entendi! Aqui está um exemplo de código HTML para uma página de prática de digitação sem a conexão com o banco de dados:
+Entendi! Para permitir que você escreva em cima das palavras enquanto pratica a digitação, podemos usar a propriedade CSS  position: absolute  para posicionar um elemento de texto sobre a palavra.
+ 
+Aqui está o código HTML atualizado com essa funcionalidade:
  
  
 <!DOCTYPE html>
@@ -12,6 +14,7 @@ Entendi! Aqui está um exemplo de código HTML para uma página de prática de d
         
         #word-container {
             margin-bottom: 20px;
+            position: relative;
         }
         
         #word {
@@ -26,6 +29,15 @@ Entendi! Aqui está um exemplo de código HTML para uma página de prática de d
             width: 300px;
         }
         
+        #typed-word {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+        }
+        
         #result {
             margin-top: 20px;
         }
@@ -37,6 +49,7 @@ Entendi! Aqui está um exemplo de código HTML para uma página de prática de d
     <div id="word-container">
         <span id="word">Digite uma palavra:</span>
         <input type="text" id="input-word" autofocus>
+        <span id="typed-word"></span>
     </div>
     
     <div id="result"></div>
@@ -44,6 +57,7 @@ Entendi! Aqui está um exemplo de código HTML para uma página de prática de d
     <script>
         const wordContainer = document.getElementById('word');
         const inputWord = document.getElementById('input-word');
+        const typedWord = document.getElementById('typed-word');
         const result = document.getElementById('result');
         let currentWord = '';
         
@@ -55,19 +69,21 @@ Entendi! Aqui está um exemplo de código HTML para uma página de prática de d
         
         function updateWord() {
             currentWord = getRandomWord();
-            wordContainer.textContent = currentWord;
+            wordContainer.textContent = 'Digite a palavra:';
+            wordContainer.appendChild(typedWord);
+            wordContainer.appendChild(document.createTextNode(currentWord));
             inputWord.value = '';
             inputWord.focus();
         }
         
         function checkWord() {
-            const typedWord = inputWord.value.trim();
+            const typedText = inputWord.value.trim();
             
-            if (typedWord === currentWord) {
+            if (typedText === currentWord) {
                 result.textContent = 'Correto! Digite outra palavra.';
                 updateWord();
             } else {
-                result.textContent = 'Incorreto. Tente novamente.';
+                typedWord.textContent = typedText;
             }
         }
         
@@ -79,8 +95,6 @@ Entendi! Aqui está um exemplo de código HTML para uma página de prática de d
 </html>
  
  
-Este código cria uma página HTML simples com um campo de texto onde você pode digitar palavras. A cada vez que você digita uma palavra corretamente, uma nova palavra é gerada. Se você digitar uma palavra incorreta, uma mensagem de erro será exibida.
+Neste código, adicionamos um novo elemento  <span>  com o id  typed-word  que será usado para exibir o texto digitado pelo usuário. Usamos a propriedade CSS  position: absolute  para posicioná-lo em cima da palavra atual.
  
-Você pode usar esse código como ponto de partida para praticar e estudar. Sinta-se à vontade para modificar e melhorar o código de acordo com suas necessidades.
- 
-Espero que isso seja útil para você! Se tiver mais alguma dúvida, estou aqui para ajudar.
+Espero que isso atenda às suas necessidades! Se você tiver mais alguma dúvida ou precisar de mais ajustes, estou à disposição.
