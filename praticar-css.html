@@ -1,4 +1,4 @@
-endi! Aqui está uma versão atualizada do exemplo, onde a cor da lista de propriedades será alterada:
+Compreendi! Aqui está uma versão atualizada do exemplo, onde a cor das palavras no segundo campo será alterada uma a uma à medida que você digita:
  
  
 <!DOCTYPE html>
@@ -91,6 +91,19 @@ endi! Aqui está uma versão atualizada do exemplo, onde a cor da lista de propr
             var cssPropertiesTextarea = document.getElementById('css-properties');
             var cssSelectorTextarea = document.getElementById('css-selector');
 
+            cssSelectorTextarea.addEventListener('input', function() {
+                var cssSelectorValue = cssSelectorTextarea.value;
+                var words = cssSelectorValue.split(/\W+/);
+
+                for (var i = 0; i < words.length; i++) {
+                    var word = words[i].trim();
+                    if (word !== '') {
+                        var regex = new RegExp("\\b" + word + "\\b", "gi");
+                        typingText.innerHTML = typingText.innerHTML.replace(regex, '<span style="color: green;">' + word + '</span>');
+                    }
+                }
+            });
+
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
 
@@ -117,19 +130,6 @@ endi! Aqui está uma versão atualizada do exemplo, onde a cor da lista de propr
                         }
                     }
                 }
-
-                var words = cssProperties.split(/[:\s]+/);
-                var typingTextContent = typingText.textContent;
-
-                for (var i = 0; i < words.length; i++) {
-                    var word = words[i].trim();
-                    if (word !== '') {
-                        var regex = new RegExp("\\b" + word + "\\b", "gi");
-                        typingTextContent = typingTextContent.replace(regex, '<span style="color: green;">' + word + '</span>');
-                    }
-                }
-
-                typingText.innerHTML = typingTextContent;
             });
         };
     </script>
@@ -137,6 +137,6 @@ endi! Aqui está uma versão atualizada do exemplo, onde a cor da lista de propr
 </html>
  
  
-Nesta versão atualizada, adicionei a classe CSS  .property-list  ao campo de texto da lista de propriedades. Essa classe define a cor do texto como azul e a fonte como Arial, sans-serif.
+Nesta versão atualizada, adicionei um evento de escuta de  input  ao campo de texto do seletor CSS ( css-selector ). Assim, toda vez que você digitar no campo, o código JavaScript será acionado e as palavras correspondentes serão destacadas em verde no texto digitado.
  
 Espero que isso atenda às suas necessidades! Se você tiver mais dúvidas, é só me perguntar.
