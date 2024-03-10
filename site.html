@@ -65,23 +65,8 @@
         <h2>Prática de PHP</h2>
         <p>Insira o código PHP abaixo:</p>
         <form>
-            <textarea name="code1" rows="10" cols="50"><?php
-              
-
-include("conexao.php");
-
-
-$usuario = $_POST['username'];
-$senha = $_POST['password'];
-
-$sql = "INSERT INTO db_users (username, senha) values ('$usuario', '$senha')";
-
-if(mysqli_query($conexao, $sql)) {
-    echo 'cadstrado com sucesso';
-} 
-
-
-?>
+          
+ 
 
             ?></textarea>
             <br>
