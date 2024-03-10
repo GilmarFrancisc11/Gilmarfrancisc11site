@@ -25,6 +25,9 @@
         .cor-verde {
             color: green;
         }
+        .cor-vermelha {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -32,7 +35,7 @@
     <div class="propriedades" id="propriedadesCSS">
         <h2>Propriedades CSS:</h2>
         <ul id="listaPropriedades">
-            <!-- Aqui serão adicionadas as propriedades automaticamente -->
+            <!-- As propriedades serão carregadas automaticamente aqui -->
         </ul>
     </div>
     <div class="entrada">
@@ -41,8 +44,7 @@
     </div>
 
     <script>
-        function atualizarPropriedades() {
-            var propriedadesInput = document.getElementById("propriedadesUsuario").value.split("\n");
+        window.onload = function () {
             var propriedadesLista = document.getElementById("listaPropriedades");
 
             // Lista de propriedades CSS conhecidas
@@ -56,43 +58,34 @@
                 // Adicione mais propriedades conforme necessário
             ];
 
-            // Limpa a lista de propriedades
-            propriedadesLista.innerHTML = "";
-
-            // Adiciona todas as propriedades à lista
+            // Carrega as propriedades diretamente na lista
             for (var i = 0; i < propriedadesConhecidas.length; i++) {
                 var propriedade = propriedadesConhecidas[i];
                 var novoItem = document.createElement("li");
                 novoItem.innerText = propriedade;
                 propriedadesLista.appendChild(novoItem);
             }
+        };
 
-            // Atualiza as cores das letras conforme o texto digitado no segundo campo
+        function atualizarPropriedades() {
+            var propriedadesInput = document.getElementById("propriedadesUsuario").value.split("\n");
+            var propriedadesLista = document.getElementById("listaPropriedades");
+
+            // Atualiza as cores das letras e verifica se o texto está correto
             for (var i = 0; i < propriedadesLista.childNodes.length; i++) {
                 var propriedadeNode = propriedadesLista.childNodes[i];
                 var propriedade = propriedadeNode.innerText;
-                var novaPropriedade = "";
+                var novaPropriedade = propriedadesInput[i] || "";
 
-                for (var j = 0; j < propriedadesInput.length; j++) {
-                    if (propriedadesInput[j].startsWith(propriedade)) {
-                        novaPropriedade = propriedadesInput[j];
-                        break;
+                var novoHTML = "";
+                for (var k = 0; k < novaPropriedade.length; k++) {
+                    if (novaPropriedade[k] === propriedade[k]) {
+                        novoHTML += "<span class='cor-verde'>" + novaPropriedade[k] + "</span>";
+                    } else {
+                        novoHTML += "<span class='cor-vermelha'>" + novaPropriedade[k] + "</span>";
                     }
                 }
-
-                if (novaPropriedade !== "") {
-                    var novoHTML = "";
-                    for (var k = 0; k < novaPropriedade.length; k++) {
-                        if (novaPropriedade[k] === propriedade[k]) {
-                            novoHTML += "<span class='cor-verde'>" + novaPropriedade[k] + "</span>";
-                        } else {
-                            novoHTML += novaPropriedade[k];
-                        }
-                    }
-                    propriedadeNode.innerHTML = novoHTML;
-                } else {
-                    propriedadeNode.innerHTML = propriedade;
-                }
+                propriedadeNode.innerHTML = novoHTML;
             }
         }
     </script>
