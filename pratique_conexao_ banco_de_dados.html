@@ -1,4 +1,5 @@
-
+Peço desculpas pela confusão anterior. Aqui está uma versão atualizada do código HTML que inclui o código visível para você praticar a digitação por cima:
+ 
  
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,6 @@
       padding: 10px;
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/typing.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var typingInput = document.getElementById("typing-input");
@@ -39,13 +39,7 @@ echo "Conexão com o banco de dados estabelecida com sucesso!";
 mysqli_close($conn);
 ?>`;
 
-      var typing = new Typing(typingInput, typingText, {
-        onFinish: function() {
-          console.log("Digitação concluída!");
-        }
-      });
-
-      typing.start();
+      typingInput.value = typingText;
     });
   </script>
 </head>
@@ -53,8 +47,13 @@ mysqli_close($conn);
   <h1>Treinamento de Digitação</h1>
   <h2>Conexão com Banco de Dados</h2>
   <p>Digite o código abaixo:</p>
-  <textarea id="typing-input"></textarea>
+  <textarea id="typing-input" readonly></textarea>
 </body>
 </html>
  
  
+Neste exemplo atualizado, o código PHP de conexão com o banco de dados está definido na variável "typingText". O valor dessa variável é atribuído ao campo de texto  <textarea>  com o ID "typing-input" usando a propriedade  value . O campo de texto é definido como somente leitura ( readonly ), para que você possa praticar a digitação por cima do código visível.
+ 
+Ao carregar a página, o código PHP será exibido no campo de texto, permitindo que você pratique a digitação por cima dele.
+ 
+Espero que isso atenda às suas necessidades! Se você tiver mais alguma dúvida, estou à disposição.
