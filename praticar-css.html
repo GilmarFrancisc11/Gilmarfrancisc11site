@@ -1,115 +1,46 @@
-Peço desculpas pela confusão. Aqui está uma versão atualizada do exemplo, onde a cor verde é aplicada no segundo campo à medida que você digita no primeiro campo:
- 
- 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Efeito de Digitação</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício de CSS</title>
     <style>
-        /* Estilos para o efeito de digitação */
-        .typing-text {
-            overflow: hidden;
-            border-right: .15em solid orange;
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .15em;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-        }
-
-        /* Animação de digitação */
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
-        }
-
-        /* Animação do cursor piscando */
-        @keyframes blink-caret {
-            from, to {
-                border-color: transparent;
-            }
-            50% {
-                border-color: orange;
-            }
-        }
-
-        /* Estilos para a lista de propriedades */
-        .property-list {
-            color: blue;
+        /* Estilize o layout como desejar */
+        body {
             font-family: Arial, sans-serif;
+            margin: 20px;
         }
-
-        /* Estilos para o segundo campo */
-        .highlight-text {
-            color: green;
+        h1 {
+            text-align: center;
+        }
+        .propriedades {
+            width: 45%;
+            float: left;
+            margin-right: 5%;
+        }
+        .entrada {
+            width: 45%;
+            float: left;
         }
     </style>
 </head>
 <body>
-    <h1>Efeito de Digitação</h1>
-    <p><span class="typing-text">Digite suas propriedades CSS aqui...</span></p>
-
-    <form>
-        <label for="css-properties">Lista de Propriedades CSS:</label><br>
-        <textarea id="css-properties" name="css-properties" rows="4" cols="50" class="property-list"></textarea><br>
-
-        <label for="css-selector">Seletor CSS:</label><br>
-        <textarea id="css-selector" name="css-selector" rows="4" cols="50" class="highlight-text" readonly></textarea><br>
-
-    </form>
-
-    <script>
-        // JavaScript para iniciar a animação de digitação
-        window.onload = function() {
-            var text = "Digite suas propriedades CSS aqui..."; // Texto a ser digitado
-            var speed = 100; // Velocidade da digitação (em milissegundos)
-
-            var typingText = document.querySelector('.typing-text');
-            var index = 0;
-
-            function type() {
-                if (index < text.length) {
-                    typingText.textContent += text.charAt(index);
-                    index++;
-                    setTimeout(type, speed);
-                }
-            }
-
-            type();
-
-            var form = document.querySelector('form');
-            var cssPropertiesTextarea = document.getElementById('css-properties');
-            var cssSelectorTextarea = document.getElementById('css-selector');
-
-            cssPropertiesTextarea.addEventListener('input', function() {
-                var cssPropertiesValue = cssPropertiesTextarea.value;
-                var words = cssPropertiesValue.split(/[:;\s]+/);
-
-                var highlightedText = '';
-                for (var i = 0; i < words.length; i++) {
-                    var word = words[i].trim();
-                    if (word !== '') {
-                        highlightedText += '<span style="color: green;">' + word + '</span> ';
-                    }
-                }
-
-                cssSelectorTextarea.innerHTML = highlightedText;
-            });
-
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-            });
-        };
-    </script>
+    <h1>Exercício de CSS</h1>
+    <div class="propriedades">
+        <h2>Propriedades CSS:</h2>
+        <ul>
+            <li>color</li>
+            <li>font-size</li>
+            <li>background-color</li>
+            <li>padding</li>
+            <li>margin</li>
+            <li>border</li>
+            <!-- Adicione mais propriedades conforme necessário -->
+        </ul>
+    </div>
+    <div class="entrada">
+        <h2>Digite as Propriedades CSS:</h2>
+        <textarea id="propriedadesUsuario" rows="6" cols="50"></textarea>
+    </div>
 </body>
 </html>
- 
- 
-Nesta versão atualizada, removi a classe  .highlight-text  do segundo campo ( css-selector ) e adicionei o atributo  readonly  para torná-lo somente leitura.
- 
-Agora, quando você digitar no primeiro campo ( css-properties ), a cor verde será aplicada no segundo campo ( css-selector ) à medida que você digita. As palavras correspondentes serão destacadas em verde.
- 
-Espero que isso atenda às suas necessidades! Se você tiver mais dúvidas, é só me perguntar.
