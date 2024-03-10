@@ -66,18 +66,15 @@
         <p>Insira o código PHP abaixo:</p>
         <form>
             <textarea name="code" rows="10" cols="50"><?php
-                echo "\ninclude(\"conexao.php\");\n\n";
-                echo "$usuario = \$_POST['username'];\n";
-                echo "$senha = \$_POST['password'];\n\n";
+                echo "<?php\n";
+                echo "include(\"conexao.php\");\n\n";
+                echo "\$usuario = \$_POST['username'];\n";
+                echo "\$senha = \$_POST['password'];\n\n";
                 echo "\$sql = \"INSERT INTO db_users (username, senha) values ('\$usuario', '\$senha')\";\n\n";
                 echo "if(mysqli_query(\$conexao, \$sql)) {\n";
                 echo "    echo 'cadastrado com sucesso';\n";
                 echo "}\n";
-            ?></textarea>
-            <br>
-            <label for="additionalCode">Código Adicional PHP:</label><br>
-            <textarea id="additionalCode" name="additionalCode" rows="5" cols="50"><?php
-                echo "\n// Insira seu código adicional aqui...\n";
+                echo "?>";
             ?></textarea>
             <br>
             <input type="submit" value="Testar Código">
