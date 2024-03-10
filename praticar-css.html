@@ -1,4 +1,4 @@
-Claro! Vou criar um exemplo básico em HTML com dois campos. No primeiro campo, você verá as propriedades do CSS e, no segundo campo, poderá digitar o que está no primeiro campo para praticar a digitação. Aqui está o código HTML:
+Claro! Vou adicionar uma função em JavaScript para que o texto digitado no segundo campo seja aplicado como cor de destaque no primeiro campo. Aqui está o código atualizado:
  
  
 <!DOCTYPE html>
@@ -25,6 +25,13 @@ Claro! Vou criar um exemplo básico em HTML com dois campos. No primeiro campo, 
       font-size: 16px;
     }
   </style>
+  
+  <script>
+    function aplicarCor() {
+      var cor = document.getElementById("campo-digitacao").value;
+      document.getElementById("campo-css").style.color = cor;
+    }
+  </script>
 </head>
 <body>
   <h1>Praticar Digitação</h1>
@@ -44,9 +51,9 @@ Claro! Vou criar um exemplo básico em HTML com dois campos. No primeiro campo, 
   
   <label for="campo-digitacao">Digite o que está no primeiro campo:</label>
   <br>
-  <textarea id="campo-digitacao"></textarea>
+  <textarea id="campo-digitacao" oninput="aplicarCor()"></textarea>
 </body>
 </html>
  
  
-Você pode copiar e colar esse código em um arquivo HTML e abri-lo em um navegador para ver o resultado. No primeiro campo, você verá as propriedades do CSS e, no segundo campo, poderá digitar o que está no primeiro campo para praticar a digitação.
+Agora, quando você digitar algo no segundo campo e sair do campo (ou pressionar Enter), a cor digitada será aplicada como cor de destaque no primeiro campo. Experimente digitar uma cor como "red" ou "#00ff00" e veja o resultado.
