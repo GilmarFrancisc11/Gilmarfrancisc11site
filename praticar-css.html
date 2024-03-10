@@ -22,60 +22,61 @@
             width: 45%;
             float: left;
         }
-        .resultado {
-            width: 100%;
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
+        .cor-verde {
+            color: green;
         }
     </style>
 </head>
 <body>
     <h1>Exercício de CSS</h1>
-    <div class="propriedades">
+    <div class="propriedades" id="propriedadesCSS">
         <h2>Propriedades CSS:</h2>
-        <ul id="listaPropriedades">
-            <li style="color: black;">color</li>
-            <li style="font-size: 16px;">font-size</li>
-            <li style="background-color: white;">background-color</li>
-            <li style="padding: 10px;">padding</li>
-            <li style="margin: 10px;">margin</li>
-            <li style="border: 1px solid black;">border</li>
+        <ul>
+            <li>color</li>
+            <li>font-size</li>
+            <li>background-color</li>
+            <li>padding</li>
+            <li>margin</li>
+            <li>border</li>
             <!-- Adicione mais propriedades conforme necessário -->
         </ul>
     </div>
     <div class="entrada">
         <h2>Digite as Propriedades CSS:</h2>
-        <textarea id="propriedadesUsuario" rows="6" cols="50"></textarea>
-    </div>
-    <div class="resultado" id="resultado">
-        <h2>Resultado:</h2>
-        <p>As propriedades serão aplicadas aqui.</p>
+        <textarea id="propriedadesUsuario" rows="6" cols="50" onkeyup="atualizarPropriedades()"></textarea>
     </div>
 
     <script>
-        // Função para aplicar as propriedades CSS
-        function aplicarPropriedades() {
-            const propriedadesUsuario = document.getElementById('propriedadesUsuario').value;
-            const listaPropriedades = document.getElementById('listaPropriedades').children;
+        function atualizarPropriedades() {
+            var propriedadesInput = document.getElementById("propriedadesUsuario").value.split("\n");
+            var propriedadesLista = document.getElementById("propriedadesCSS").getElementsByTagName("li");
 
-            const propriedadesArray = propriedadesUsuario.split(';');
+            for (var i = 0; i < propriedadesLista.length; i++) {
+                var propriedade = propriedadesLista[i].innerText;
+                var novaPropriedade = "";
 
-            propriedadesArray.forEach(propriedade => {
-                const partes = propriedade.split(':');
-                const nomePropriedade = partes[0].trim();
-                const valorPropriedade = partes[1].trim();
-
-                for (let i = 0; i < listaPropriedades.length; i++) {
-                    if (listaPropriedades[i].textContent.trim() === nomePropriedade) {
-                        listaPropriedades[i].style.setProperty(nomePropriedade, valorPropriedade);
+                for (var j = 0; j < propriedadesInput.length; j++) {
+                    if (propriedadesInput[j].startsWith(propriedade)) {
+                        novaPropriedade = propriedadesInput[j];
+                        break;
                     }
                 }
-            });
-        }
 
-        // Adicionando evento de mudança no campo de entrada
-        document.getElementById('propriedadesUsuario').addEventListener('input', aplicarPropriedades);
+                if (novaPropriedade !== "") {
+                    var novoHTML = "";
+                    for (var k = 0; k < novaPropriedade.length; k++) {
+                        if (novaPropriedade[k] === propriedade[k]) {
+                            novoHTML += "<span class='cor-verde'>" + novaPropriedade[k] + "</span>";
+                        } else {
+                            novoHTML += novaPropriedade[k];
+                        }
+                    }
+                    propriedadesLista[i].innerHTML = novoHTML;
+                } else {
+                    propriedadesLista[i].innerHTML = propriedade;
+                }
+            }
+        }
     </script>
 </body>
 </html>
