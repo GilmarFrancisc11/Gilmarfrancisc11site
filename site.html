@@ -4,20 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prática de PHP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h2>Prática de PHP</h2>
-    <p>Insira o código PHP abaixo:</p>
-    <form>
-        <textarea name="code" rows="10" cols="50"><?php
-            echo "\ninclude(\"conexao.php\");\n\n";
-            echo "$usuario = \$_POST['username'];\n";
-            echo "$senha = \$_POST['password'];\n\n";
-            echo "\$sql = \"INSERT INTO db_users (username, senha) values ('\$usuario', '\$senha')\";\n\n";
-            echo "if(mysqli_query(\$conexao, \$sql)) {\n";
-            echo "    echo 'cadastrado com sucesso';\n";
-            echo "}\n";
-        ?></textarea>
-    </form>
+    <div class="container">
+        <h2>Prática de PHP</h2>
+        <p>Insira o código PHP abaixo:</p>
+        <form>
+            <textarea name="code" rows="10" cols="50"><?php
+                echo "\ninclude(\"conexao.php\");\n\n";
+                echo "$usuario = \$_POST['username'];\n";
+                echo "$senha = \$_POST['password'];\n\n";
+                echo "\$sql = \"INSERT INTO db_users (username, senha) values ('\$usuario', '\$senha')\";\n\n";
+                echo "if(mysqli_query(\$conexao, \$sql)) {\n";
+                echo "    echo 'cadastrado com sucesso';\n";
+                echo "}\n";
+            ?></textarea>
+            <br>
+            <input type="submit" value="Executar">
+        </form>
+    </div>
 </body>
 </html>
