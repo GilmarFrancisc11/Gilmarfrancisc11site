@@ -1,4 +1,6 @@
-
+Claro! Você pode adicionar mais propriedades ao primeiro campo para praticar a digitação. Basta adicionar as propriedades desejadas separadas por ponto-e-vírgula (;). Aqui está o código atualizado com algumas propriedades adicionais:
+ 
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,35 +27,6 @@
   </style>
   
   <script>
-    var tempoRestante = 5; // Tempo em minutos
-    
-    function atualizarTempo() {
-      var minutos = Math.floor(tempoRestante / 60);
-      var segundos = tempoRestante % 60;
-      
-      var tempoFormatado = formatarNumero(minutos) + ":" + formatarNumero(segundos);
-      
-      document.getElementById("tempo-restante").textContent = tempoFormatado;
-      
-      if (tempoRestante === 0) {
-        alert("Tempo esgotado!");
-        document.getElementById("campo-digitacao").disabled = true;
-      } else {
-        tempoRestante--;
-        setTimeout(atualizarTempo, 1000000);
-      }
-    }
-    
-    function formatarNumero(numero) {
-      return numero < 10 ? "0" + numero : numero;
-    }
-    
-    function iniciarContagem() {
-      document.getElementById("campo-digitacao").disabled = false;
-      document.getElementById("campo-digitacao").focus();
-      atualizarTempo();
-    }
-    
     function aplicarCor() {
       var texto1 = document.getElementById("campo-css").value;
       var texto2 = document.getElementById("campo-digitacao").value;
@@ -82,31 +55,27 @@
   
   <label for="campo-css">Propriedades do CSS:</label>
   <br>
-  <div id="campo-css">
+  <textarea id="campo-css" readonly>
     width: 300px;
     height: 100px;
     border: 1px solid black;
     padding: 10px;
     font-family: Arial, sans-serif;
     font-size: 16px;
-  </div>
+    background-color: #f2f2f2;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  </textarea>
   
   <br><br>
   
   <label for="campo-digitacao">Digite o que está no primeiro campo:</label>
   <br>
-  <textarea id="campo-digitacao" oninput="aplicarCor()" disabled></textarea>
-  
-  <br><br>
-  
-  <button onclick="iniciarContagem()">Iniciar Contagem</button>
-  
-  <br><br>
-  
-  <label for="tempo-restante">Tempo Restante:</label>
-  <span id="tempo-restante"></span>
+  <textarea id="campo-digitacao" oninput="aplicarCor()"></textarea>
 </body>
 </html>
  
  
-Agora, ao clicar no botão "Iniciar Contagem", será iniciada numa contagem regressiva de 5 minutos. O tempo restante será exibido em minutos e segundos ao lado do campo de digitação. Quando o tempo esgotar, será exibido um alerta e o campo de digitação será desabilitado. Experimente clicar no botão "Iniciar Contagem" e digitar no campo de digitação antes que o tempo acabe.
+Agora, o primeiro campo inclui algumas propriedades adicionais, como  background-color ,  margin ,  text-align ,  box-shadow  e  border-radius . Essas propriedades serão destacadas quando digitadas corretamente no segundo campo. Experimente digitar essas propriedades no campo de digitação e veja o resultado.
