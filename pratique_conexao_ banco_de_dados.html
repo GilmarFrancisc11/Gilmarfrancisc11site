@@ -1,3 +1,6 @@
+Entendi! Aqui está o código HTML que cria uma página onde você pode praticar a digitação escrevendo por cima do código existente, com a pontuação incluída:
+ 
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +18,57 @@
       background-color: #f5f5f5;
       padding: 5px;
     }
+
+    .typing-input {
+      border: none;
+      outline: none;
+      font-family: Consolas, monospace;
+      font-size: 14px;
+      padding: 5px;
+      background-color: transparent;
+      width: 100%;
+    }
   </style>
+  <script>
+    function checkInput() {
+      var typedCode = document.getElementById("typing-input").value;
+      var originalCode = `<?php
+$servername = "localhost";
+$username = "seu_usuario";
+$password = "sua_senha";
+$dbname = "seu_banco_de_dados";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if (!$conn) {
+  die("Falha na conexão: " . mysqli_connect_error());
+}
+
+echo "Conexão com o banco de dados estabelecida com sucesso!";
+
+mysqli_close($conn);
+?>`;
+
+      var i = 0;
+      var mistakes = 0;
+
+      while (i < typedCode.length && i < originalCode.length) {
+        if (typedCode[i] !== originalCode[i]) {
+          mistakes++;
+        }
+        i++;
+      }
+
+      if (typedCode.length < originalCode.length) {
+        mistakes += originalCode.length - typedCode.length;
+      }
+
+      var accuracy = ((originalCode.length - mistakes) / originalCode.length) * 100;
+      accuracy = accuracy.toFixed(2);
+
+      document.getElementById("accuracy").innerText = "Precisão: " + accuracy + "%";
+    }
+  </script>
 </head>
 <body>
   <h1>Treinamento de Digitação - Conexão com Banco de Dados</h1>
@@ -42,7 +95,15 @@
     ?&gt;
   </code>
 
-  <p>Pratique digitando o código acima no teclado, tentando não olhar para ele. Isso ajudará a melhorar sua habilidade de digitação e familiaridade com o código de conexão com banco de dados em PHP e MySQL.</p>
+  <p>Escreva o código acima na área abaixo:</p>
+  <textarea id="typing-input" class="typing-input" rows="10" oninput="checkInput()"></textarea>
+
+  <p id="accuracy"></p>
   
 </body>
 </html>
+ 
+ 
+Nesta página, você pode digitar o código de conexão com o banco de dados na área de texto abaixo do código original. À medida que você digita, a precisão do seu código em relação ao original será calculada e exibida acima da área de texto.
+ 
+Espero que isso atenda às suas necessidades! Se você tiver mais alguma dúvida, estou à disposição.
