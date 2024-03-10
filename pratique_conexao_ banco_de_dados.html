@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Treinamento de Digitação - Conexão com Banco de Dados</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+      font-size: 14px;
+      background-color: #f5f5f5;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Treinamento de Digitação - Conexão com Banco de Dados</h1>
+  
+  <h2>Código de Conexão com Banco de Dados em PHP e MySQL</h2>
+  <p>Digite o código abaixo:</p>
+  
+  <code>
+    &lt;?php<br>
+    $servername = "localhost";<br>
+    $username = "seu_usuario";<br>
+    $password = "sua_senha";<br>
+    $dbname = "seu_banco_de_dados";<br><br>
+    
+    $conn = mysqli_connect($servername, $username, $password, $dbname);<br><br>
+    
+    if (!$conn) {<br>
+    &emsp;die("Falha na conexão: " . mysqli_connect_error());<br>
+    }<br><br>
+    
+    echo "Conexão com o banco de dados estabelecida com sucesso!";<br><br>
+    
+    mysqli_close($conn);<br>
+    ?&gt;
+  </code>
+
+  <p>Pratique digitando o código acima no teclado, tentando não olhar para ele. Isso ajudará a melhorar sua habilidade de digitação e familiaridade com o código de conexão com banco de dados em PHP e MySQL.</p>
+  
+</body>
+</html>
