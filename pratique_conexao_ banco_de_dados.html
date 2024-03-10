@@ -1,10 +1,10 @@
-Peço desculpas pela confusão anterior. Aqui está uma versão atualizada do código HTML que inclui o código visível para você praticar a digitação por cima:
+Peço desculpas pela confusão anterior. Aqui está um exemplo de código HTML que inclui um campo de prática de digitação para o seu código de conexão com o banco de dados:
  
  
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Treinamento de Digitação</title>
+  <title>Treinamento de Digitação - Conexão com Banco de Dados</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@ Peço desculpas pela confusão anterior. Aqui está uma versão atualizada do c�
     }
 
     #typing-input {
-      width: 500px;
+      width: 100%;
       height: 200px;
       font-size: 16px;
       padding: 10px;
@@ -44,15 +44,14 @@ mysqli_close($conn);
   </script>
 </head>
 <body>
-  <h1>Treinamento de Digitação</h1>
-  <h2>Conexão com Banco de Dados</h2>
+  <h1>Treinamento de Digitação - Conexão com Banco de Dados</h1>
   <p>Digite o código abaixo:</p>
-  <textarea id="typing-input" readonly></textarea>
+  <textarea id="typing-input"></textarea>
 </body>
 </html>
  
  
-Neste exemplo atualizado, o código PHP de conexão com o banco de dados está definido na variável "typingText". O valor dessa variável é atribuído ao campo de texto  <textarea>  com o ID "typing-input" usando a propriedade  value . O campo de texto é definido como somente leitura ( readonly ), para que você possa praticar a digitação por cima do código visível.
+Neste exemplo, o código PHP de conexão com o banco de dados é definido na variável "typingText". O valor dessa variável é atribuído ao campo de texto  <textarea>  com o ID "typing-input" usando a propriedade  value . Dessa forma, o código é exibido no campo de texto para você praticar a digitação por cima dele.
  
 Ao carregar a página, o código PHP será exibido no campo de texto, permitindo que você pratique a digitação por cima dele.
  
