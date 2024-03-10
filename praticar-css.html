@@ -36,11 +36,16 @@
         <h2>Propriedades CSS:</h2>
         <ul id="listaPropriedades">
             <!-- As propriedades serão carregadas automaticamente aqui -->
+            <li>color</li>
+            <li>font-size</li>
+            <li>font-family</li>
+            <!-- Adicione mais propriedades conforme necessário -->
         </ul>
     </div>
     <div class="entrada">
         <h2>Digite as Propriedades CSS:</h2>
-        <textarea id="propriedadesUsuario" rows="6" cols="50" oninput="atualizarPropriedades()"></textarea>
+        <div id="textoDigitado"></div>
+        <textarea id="propriedadesUsuario" rows="6" cols="50" onkeyup="atualizarPropriedades()"></textarea>
     </div>
 
     <script>
@@ -70,23 +75,23 @@
         function atualizarPropriedades() {
             var propriedadesInput = document.getElementById("propriedadesUsuario").value;
             var propriedadesLista = document.getElementById("listaPropriedades");
+            var textoDigitado = document.getElementById("textoDigitado");
+
             var propriedades = propriedadesLista.getElementsByTagName("li");
+            var novoTexto = "";
 
-            for (var i = 0; i < propriedades.length; i++) {
-                var propriedade = propriedades[i].innerText;
-                var novaPropriedade = propriedadesInput.substring(0, propriedade.length);
-                var restoPropriedade = propriedadesInput.substring(propriedade.length);
-
-                var novoHTML = "";
-                for (var j = 0; j < novaPropriedade.length; j++) {
-                    if (novaPropriedade[j] === propriedade[j]) {
-                        novoHTML += "<span class='cor-verde'>" + novaPropriedade[j] + "</span>";
-                    } else {
-                        novoHTML += "<span class='cor-vermelha'>" + novaPropriedade[j] + "</span>";
-                    }
+            for (var i = 0; i < propriedadesInput.length; i++) {
+                var letra = propriedadesInput[i];
+                var corClasse = "";
+                if (propriedadesInput[i] === propriedades[0].innerText[i]) {
+                    corClasse = "cor-verde";
+                } else {
+                    corClasse = "cor-vermelha";
                 }
-                propriedades[i].innerHTML = novoHTML + restoPropriedade;
+                novoTexto += "<span class='" + corClasse + "'>" + letra + "</span>";
             }
+
+            textoDigitado.innerHTML = novoTexto;
         }
     </script>
 </body>
