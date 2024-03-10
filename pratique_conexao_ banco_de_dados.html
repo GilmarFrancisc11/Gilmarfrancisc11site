@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informações de Conexão</title>
+    <title>Código PHP Colorido</title>
 </head>
 <body>
-    <h1>Informações de Conexão PHP</h1>
-    <p>&lt;?php</p>
-    <p>// Definição das informações de conexão</p>
-    <p>$servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")</p>
-    <p>$usuario = "root"; // Nome de usuário do banco de dados</p>
-    <p>$senha = ""; // Senha do banco de dados</p>
-    <p>$dbname = "db_trailerv1.0"; // Nome do banco de dados que você deseja se conectar</p>
-    <p>// Conexão com o banco de dados</p>
-    <p>$conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);</p>
-    <p>// Verificação da conexão</p>
-    <p>if (!$conexao) {</p>
-    <p>    die("Conexão falhou: " . mysqli_connect_error());</p>
-    <p>}</p>
-    <p>?&gt;</p>
+    <p id="codigo-php">
+        <?php
+        // Definição das informações de conexão
+        $servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")
+        $usuario = "root"; // Nome de usuário do banco de dados
+        $senha = ""; // Senha do banco de dados
+        $dbname = "db_trailerv1.0"; // Nome do banco de dados que você deseja se conectar
+
+        // Conexão com o banco de dados
+        $conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
+
+        // Verificação da conexão
+        if (!$conexao) {
+            die("<span style='color: blue;'>Conexão falhou:</span> " . mysqli_connect_error());
+        }
+        ?>
+    </p>
 </body>
 </html>
