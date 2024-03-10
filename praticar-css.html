@@ -39,7 +39,7 @@
       var texto1 = document.getElementById("campo-css").value;
       var texto2 = document.getElementById("campo-digitacao").value;
       
-      var palavras1 = texto1.split(/\n/);
+      var palavras1 = texto1.split(/;\s+/);
       
       var textoFormatado = "";
       
@@ -51,7 +51,7 @@
           cor = "marcado";
         }
         
-        textoFormatado += "<span class='" + cor + "'>" + palavra1 + "</span><br>";
+        textoFormatado += "<span class='" + cor + "'>" + palavra1 + ";</span><br>";
       }
       
       document.getElementById("campo-css").innerHTML = textoFormatado;
@@ -62,7 +62,7 @@
         var minutos = Math.floor(segundos / 60);
         segundos = segundos % 60;
         
-        document.getElementById("tempo-decorrido").innerHTML = "Tempo decorrido: " + minutos + "min " + segundos + "s";
+        document.getElementById("tempo-decorrente").innerHTML = "Tempo decorrente: " + minutos + "min " + segundos + "s";
       }
     }
   </script>
@@ -89,6 +89,6 @@
   
   <br><br>
   
-  <div id="tempo-decorrido"></div>
+  <div id="tempo-decorrente"></div>
 </body>
 </html>
