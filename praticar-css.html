@@ -1,93 +1,121 @@
+Compreendi! Aqui está um exemplo atualizado com um segundo campo onde você pode digitar um seletor CSS. Se o seletor corresponder a um elemento no primeiro campo, ele será selecionado:
+ 
+ 
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    /* Estilo para o primeiro campo */
-    #campo-css {
-      width: 300px;
-      height: 100px;
-      border: 1px solid black;
-      padding: 10px;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-    }
-    
-    /* Estilo para o segundo campo */
-    #campo-digitacao {
-      width: 300px;
-      height: 100px;
-      border: 1px solid black;
-      padding: 10px;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-    }
-    
-    /* Estilo para as palavras marcadas */
-    .marcado {
-      color: green;
-    }
-  </style>
-  
-  <script>
-    var inicioDigitacao = null;
-    
-    function iniciarTempo() {
-      inicioDigitacao = new Date();
-    }
-    
-    function aplicarCor() {
-      var texto1 = document.getElementById("campo-css").value;
-      var texto2 = document.getElementById("campo-digitacao").value;
-      
-      var palavras1 = texto1.split(/;\s+/);
-      
-      var textoFormatado = "";
-      
-      for (var i = 0; i < palavras1.length; i++) {
-        var palavra1 = palavras1[i];
-        var cor = "";
-        
-        if (texto2.includes(palavra1.trim())) {
-          cor = "marcado";
+    <title>Efeito de Digitação</title>
+    <style>
+        /* Estilos para o efeito de digitação */
+        .typing-text {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
         }
-        
-        textoFormatado += "<span class='" + cor + "'>" + palavra1 + ";</span><br>";
-      }
-      
-      document.getElementById("campo-css").innerHTML = textoFormatado;
-      
-      if (inicioDigitacao) {
-        var tempoDecorrente = new Date() - inicioDigitacao;
-        var segundos = Math.floor(tempoDecorrente / 1000);
-        var minutos = Math.floor(segundos / 60);
-        segundos = segundos % 60;
-        
-        document.getElementById("tempo-decorrente").innerHTML = "Tempo decorrente: " + minutos + "min " + segundos + "s";
-      }
-    }
-  </script>
+
+        /* Animação de digitação */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Animação do cursor piscando */
+        @keyframes blink-caret {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: orange;
+            }
+        }
+
+        /* Estilo para seleção */
+        .selected {
+            background-color: lightblue;
+        }
+    </style>
 </head>
 <body>
-  <h1>Praticar Digitação</h1>
-  
-  <label for="campo-css">Propriedades do CSS:</label>
-  <br>
-  <div id="campo-css"></div>
-  
-  <br><br>
-  
-  <label for="campo-digitacao">Digite o que está no primeiro campo:</label>
-  <br>
-  <textarea id="campo-digitacao" oninput="aplicarCor(); iniciarTempo();"></textarea>
-  
-  <br><br>
-  
-  <div id="tempo-decorrente"></div>
-  
-  <script>
-    var texto1 = document.getElementById("campo-css").innerHTML;
-    texto1 = texto1.replace(/^\s+|\s+$/g, '');
-    document.getElementById("campo-css").innerHTML = texto1;
-  </script>
+    <h1>Efeito de Digitação</h1>
+    <p><span class="typing-text">Digite suas propriedades CSS aqui...</span></p>
+
+    <form>
+        <label for="css-properties">Lista de Propriedades CSS:</label><br>
+        <textarea id="css-properties" name="css-properties" rows="4" cols="50">
+            color: red;
+            font-size: 16px;
+            background-color: yellow;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid black;
+            text-align: center;
+            width: 200px;
+            height: 100px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px gray;
+        </textarea><br>
+
+        <label for="css-selector">Seletor CSS:</label><br>
+        <input type="text" id="css-selector" name="css-selector"><br>
+
+        <input type="submit" value="Aplicar">
+    </form>
+
+    <script>
+        // JavaScript para iniciar a animação de digitação
+        window.onload = function() {
+            var text = "Digite suas propriedades CSS aqui..."; // Texto a ser digitado
+            var speed = 100; // Velocidade da digitação (em milissegundos)
+
+            var typingText = document.querySelector('.typing-text');
+            var index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    typingText.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, speed);
+                }
+            }
+
+            type();
+
+            var form = document.querySelector('form');
+            var cssPropertiesTextarea = document.getElementById('css-properties');
+            var cssSelectorInput = document.getElementById('css-selector');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                var cssProperties = cssPropertiesTextarea.value;
+                var selector = cssSelectorInput.value;
+
+                var elements = document.querySelectorAll(selector);
+                var selectedElements = document.getElementsByClassName('selected');
+
+                for (var i = 0; i < selectedElements.length; i++) {
+                    selectedElements[i].classList.remove('selected');
+                }
+
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].classList.add('selected');
+                }
+            });
+        };
+    </script>
 </body>
 </html>
+ 
+ 
+Neste exemplo, adicionei um segundo campo de entrada  <input>  onde você pode digitar um seletor CSS. Quando você clica em "Aplicar", o seletor é usado para selecionar os elementos correspondentes no primeiro campo de propriedades CSS. Os elementos selecionados recebem a classe CSS "selected", que tem um estilo de fundo azul claro.
+ 
+Você pode experimentar diferentes seletores CSS para ver os elementos sendo selecionados. Certifique-se de digitar corretamente o seletor CSS para obter os resultados desejados.
+ 
+Espero que isso seja útil para você praticar CSS! Se você tiver mais dúvidas, é só me perguntar.
