@@ -1,4 +1,4 @@
-Compreendi! Aqui está uma versão atualizada do exemplo, onde as palavras correspondentes no primeiro campo ficam verdes:
+Peço desculpas pelo erro. Parece que houve uma falha na minha resposta anterior. Vou corrigir o código para garantir que a cor das palavras correspondentes seja aplicada corretamente. Aqui está a versão atualizada do exemplo:
  
  
 <!DOCTYPE html>
@@ -112,7 +112,7 @@ Compreendi! Aqui está uma versão atualizada do exemplo, onde as palavras corre
                     }
                 }
 
-                var words = cssProperties.split(/\W+/);
+                var words = cssProperties.split(/[:\s]+/);
                 var typingTextContent = typingText.textContent;
 
                 for (var i = 0; i < words.length; i++) {
@@ -131,6 +131,6 @@ Compreendi! Aqui está uma versão atualizada do exemplo, onde as palavras corre
 </html>
  
  
-Nesta versão atualizada, adicionei um código JavaScript adicional para percorrer as palavras no primeiro campo e, se houver correspondência com as palavras no seletor CSS, as palavras correspondentes ficarão verdes. Isso é feito adicionando um  <span>  com estilo de cor verde em torno das palavras correspondentes.
+Nesta versão atualizada, corrigi o padrão de expressão regular usado para dividir as palavras no primeiro campo. Agora, as palavras são divididas usando  /[:\s]+/ , que considera tanto os espaços quanto os dois pontos como separadores. Isso garante que cada palavra seja considerada corretamente.
  
-Espero que isso atenda às suas necessidades! Se você tiver mais dúvidas, é só me perguntar.
+Espero que isso resolva o problema! Se você tiver mais dúvidas, é só me perguntar.
