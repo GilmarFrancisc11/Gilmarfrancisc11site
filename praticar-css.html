@@ -31,14 +31,8 @@
     <h1>Exercício de CSS</h1>
     <div class="propriedades" id="propriedadesCSS">
         <h2>Propriedades CSS:</h2>
-        <ul>
-            <li>color</li>
-            <li>font-size</li>
-            <li>background-color</li>
-            <li>padding</li>
-            <li>margin</li>
-            <li>border</li>
-            <!-- Adicione mais propriedades conforme necessário -->
+        <ul id="listaPropriedades">
+            <!-- Aqui serão adicionadas as propriedades automaticamente -->
         </ul>
     </div>
     <div class="entrada">
@@ -49,10 +43,34 @@
     <script>
         function atualizarPropriedades() {
             var propriedadesInput = document.getElementById("propriedadesUsuario").value.split("\n");
-            var propriedadesLista = document.getElementById("propriedadesCSS").getElementsByTagName("li");
+            var propriedadesLista = document.getElementById("listaPropriedades");
 
-            for (var i = 0; i < propriedadesLista.length; i++) {
-                var propriedade = propriedadesLista[i].innerText;
+            // Lista de propriedades CSS conhecidas
+            var propriedadesConhecidas = [
+                "color", "font-size", "font-family", "font-weight", "text-align", "background-color",
+                "padding", "margin", "border", "width", "height", "display", "position", "top", "right",
+                "bottom", "left", "float", "clear", "overflow", "z-index", "visibility", "opacity",
+                "transition", "transform", "box-shadow", "border-radius", "border-color", "border-width",
+                "border-style", "outline", "list-style", "text-decoration", "white-space", "cursor",
+                "vertical-align", "text-transform", "line-height", "word-spacing", "letter-spacing"
+                // Adicione mais propriedades conforme necessário
+            ];
+
+            // Limpa a lista de propriedades
+            propriedadesLista.innerHTML = "";
+
+            // Adiciona todas as propriedades à lista
+            for (var i = 0; i < propriedadesConhecidas.length; i++) {
+                var propriedade = propriedadesConhecidas[i];
+                var novoItem = document.createElement("li");
+                novoItem.innerText = propriedade;
+                propriedadesLista.appendChild(novoItem);
+            }
+
+            // Atualiza as cores das letras conforme o texto digitado no segundo campo
+            for (var i = 0; i < propriedadesLista.childNodes.length; i++) {
+                var propriedadeNode = propriedadesLista.childNodes[i];
+                var propriedade = propriedadeNode.innerText;
                 var novaPropriedade = "";
 
                 for (var j = 0; j < propriedadesInput.length; j++) {
@@ -71,9 +89,9 @@
                             novoHTML += novaPropriedade[k];
                         }
                     }
-                    propriedadesLista[i].innerHTML = novoHTML;
+                    propriedadeNode.innerHTML = novoHTML;
                 } else {
-                    propriedadesLista[i].innerHTML = propriedade;
+                    propriedadeNode.innerHTML = propriedade;
                 }
             }
         }
