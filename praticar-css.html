@@ -1,28 +1,52 @@
-
+Claro! Vou criar um exemplo básico em HTML com dois campos. No primeiro campo, você verá as propriedades do CSS e, no segundo campo, poderá digitar o que está no primeiro campo para praticar a digitação. Aqui está o código HTML:
+ 
+ 
 <!DOCTYPE html>
 <html>
 <head>
   <style>
-    .exemplo {
-      color: blue;
-      font-size: 16px;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: yellow;
-      width: 200px;
+    /* Estilo para o primeiro campo */
+    #campo-css {
+      width: 300px;
       height: 100px;
-      margin: 10px;
-      padding: 20px;
       border: 1px solid black;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+    
+    /* Estilo para o segundo campo */
+    #campo-digitacao {
+      width: 300px;
+      height: 100px;
+      border: 1px solid black;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <div class="exemplo">
-    <h1>Exemplo de Estilo CSS</h1>
-    <p>Pratique digitando as propriedades do CSS aqui!</p>
-  </div>
+  <h1>Praticar Digitação</h1>
+  
+  <label for="campo-css">Propriedades do CSS:</label>
+  <br>
+  <textarea id="campo-css" readonly>
+    width: 300px;
+    height: 100px;
+    border: 1px solid black;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  </textarea>
+  
+  <br><br>
+  
+  <label for="campo-digitacao">Digite o que está no primeiro campo:</label>
+  <br>
+  <textarea id="campo-digitacao"></textarea>
 </body>
 </html>
  
  
+Você pode copiar e colar esse código em um arquivo HTML e abri-lo em um navegador para ver o resultado. No primeiro campo, você verá as propriedades do CSS e, no segundo campo, poderá digitar o que está no primeiro campo para praticar a digitação.
