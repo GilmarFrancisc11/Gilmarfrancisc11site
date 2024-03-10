@@ -40,7 +40,7 @@
     </div>
     <div class="entrada">
         <h2>Digite as Propriedades CSS:</h2>
-        <textarea id="propriedadesUsuario" rows="6" cols="50" onkeyup="atualizarPropriedades()"></textarea>
+        <textarea id="propriedadesUsuario" rows="6" cols="50" oninput="atualizarPropriedades()"></textarea>
     </div>
 
     <script>
@@ -68,22 +68,23 @@
         };
 
         function atualizarPropriedades() {
-            var propriedadesInput = document.getElementById("propriedadesUsuario").value.split("\n");
+            var propriedadesInput = document.getElementById("propriedadesUsuario").value;
             var propriedadesLista = document.getElementById("listaPropriedades");
 
             // Atualiza as cores das letras e verifica se o texto está correto
             for (var i = 0; i < propriedadesLista.childNodes.length; i++) {
                 var propriedadeNode = propriedadesLista.childNodes[i];
                 var propriedade = propriedadeNode.innerText;
-                var novaPropriedade = propriedadesInput[i] || "";
 
                 var novoHTML = "";
-                for (var k = 0; k < novaPropriedade.length; k++) {
-                    if (novaPropriedade[k] === propriedade[k]) {
-                        novoHTML += "<span class='cor-verde'>" + novaPropriedade[k] + "</span>";
+                for (var k = 0; k < propriedade.length; k++) {
+                    var cor = "black"; // Cor padrão
+                    if (propriedadesInput[k] === propriedade[k]) {
+                        cor = "green"; // Se a letra é igual, cor verde
                     } else {
-                        novoHTML += "<span class='cor-vermelha'>" + novaPropriedade[k] + "</span>";
+                        cor = "red"; // Se a letra é diferente, cor vermelha
                     }
+                    novoHTML += "<span style='color:" + cor + ";'>" + propriedade[k] + "</span>";
                 }
                 propriedadeNode.innerHTML = novoHTML;
             }
