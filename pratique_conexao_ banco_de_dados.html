@@ -1,10 +1,7 @@
-Entendi! Aqui está o código HTML que cria uma página onde você pode praticar a digitação escrevendo por cima do código existente, com a pontuação incluída:
- 
- 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Treinamento de Digitação - Conexão com Banco de Dados</title>
+  <title>Treinamento de Digitação</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,27 +9,18 @@ Entendi! Aqui está o código HTML que cria uma página onde você pode praticar
       padding: 20px;
     }
 
-    code {
-      font-family: Consolas, monospace;
-      font-size: 14px;
-      background-color: #f5f5f5;
-      padding: 5px;
-    }
-
-    .typing-input {
-      border: none;
-      outline: none;
-      font-family: Consolas, monospace;
-      font-size: 14px;
-      padding: 5px;
-      background-color: transparent;
-      width: 100%;
+    #typing-input {
+      width: 500px;
+      height: 200px;
+      font-size: 16px;
+      padding: 10px;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/typing.js"></script>
   <script>
-    function checkInput() {
-      var typedCode = document.getElementById("typing-input").value;
-      var originalCode = `<?php
+    document.addEventListener("DOMContentLoaded", function() {
+      var typingInput = document.getElementById("typing-input");
+      var typingText = `<?php
 $servername = "localhost";
 $username = "seu_usuario";
 $password = "sua_senha";
@@ -49,61 +37,22 @@ echo "Conexão com o banco de dados estabelecida com sucesso!";
 mysqli_close($conn);
 ?>`;
 
-      var i = 0;
-      var mistakes = 0;
-
-      while (i < typedCode.length && i < originalCode.length) {
-        if (typedCode[i] !== originalCode[i]) {
-          mistakes++;
+      var typing = new Typing(typingInput, typingText, {
+        onFinish: function() {
+          console.log("Digitação concluída!");
         }
-        i++;
-      }
+      });
 
-      if (typedCode.length < originalCode.length) {
-        mistakes += originalCode.length - typedCode.length;
-      }
-
-      var accuracy = ((originalCode.length - mistakes) / originalCode.length) * 100;
-      accuracy = accuracy.toFixed(2);
-
-      document.getElementById("accuracy").innerText = "Precisão: " + accuracy + "%";
-    }
+      typing.start();
+    });
   </script>
 </head>
 <body>
-  <h1>Treinamento de Digitação - Conexão com Banco de Dados</h1>
-  
-  <h2>Código de Conexão com Banco de Dados em PHP e MySQL</h2>
+  <h1>Treinamento de Digitação</h1>
+  <h2>Conexão com Banco de Dados</h2>
   <p>Digite o código abaixo:</p>
-  
-  <code>
-    &lt;?php<br>
-    $servername = "localhost";<br>
-    $username = "seu_usuario";<br>
-    $password = "sua_senha";<br>
-    $dbname = "seu_banco_de_dados";<br><br>
-    
-    $conn = mysqli_connect($servername, $username, $password, $dbname);<br><br>
-    
-    if (!$conn) {<br>
-    &emsp;die("Falha na conexão: " . mysqli_connect_error());<br>
-    }<br><br>
-    
-    echo "Conexão com o banco de dados estabelecida com sucesso!";<br><br>
-    
-    mysqli_close($conn);<br>
-    ?&gt;
-  </code>
-
-  <p>Escreva o código acima na área abaixo:</p>
-  <textarea id="typing-input" class="typing-input" rows="10" oninput="checkInput()"></textarea>
-
-  <p id="accuracy"></p>
-  
+  <textarea id="typing-input"></textarea>
 </body>
 </html>
  
  
-Nesta página, você pode digitar o código de conexão com o banco de dados na área de texto abaixo do código original. À medida que você digita, a precisão do seu código em relação ao original será calculada e exibida acima da área de texto.
- 
-Espero que isso atenda às suas necessidades! Se você tiver mais alguma dúvida, estou à disposição.
