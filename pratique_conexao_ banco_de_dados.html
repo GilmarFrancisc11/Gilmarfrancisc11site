@@ -43,7 +43,7 @@ if (!$conexao) {
             let posicaoTexto = 0;
 
             for (let i = 0; i < codigoOriginal.length; i++) {
-                if (codigoOriginal[i] === '&') {
+                if (codigoOriginal[i] === ' ') {
                     textoFormatado += texto[posicaoTexto++] || ''; // Adicionar a próxima palavra
                 } else {
                     textoFormatado += codigoOriginal[i];
