@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,24 +10,23 @@
     <div style="display: flex;">
         <div style="flex: 1;">
             <h2>Código PHP de Exemplo:</h2>
-            <p id="codigo-php" style="white-space: pre-wrap; color: green;">
-                &lt;?php
-                <br>
-                // Definição das informações de conexão
-                $servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")
-                $usuario = "root"; // Nome de usuário do banco de dados
-                $senha = ""; // Senha do banco de dados
-                $dbname = "db_trailerv1.0"; // Nome do banco de dados que você deseja se conectar
-                <br>
-                // Conexão com o banco de dados
-                $conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
-                <br>
-                // Verificação da conexão
-                if (!$conexao) {
-                    die("Conexão falhou: " . mysqli_connect_error());
-                }
-                ?&gt;
-            </p>
+            <pre id="codigo-php" style="white-space: pre-wrap; color: green;">
+&lt;?php
+// Definição das informações de conexão
+$servidor = "localhost"; // Endereço do servidor do banco de dados (normalmente é "localhost")
+$usuario = "root"; // Nome de usuário do banco de dados
+$senha = ""; // Senha do banco de dados
+$dbname = "db_trailerv1.0"; // Nome do banco de dados que você deseja se conectar
+
+// Conexão com o banco de dados
+$conexao = mysqli_connect($servidor, $usuario, $senha, $dbname);
+
+// Verificação da conexão
+if (!$conexao) {
+    die("Conexão falhou: " . mysqli_connect_error());
+}
+?&gt;
+            </pre>
         </div>
         <div style="flex: 1; padding-left: 20px;">
             <h2 style="color: green;">Pratique seu Código Aqui:</h2>
@@ -38,9 +38,9 @@
         function destacarSintaxe() {
             const texto = document.getElementById('praticar-codigo').value;
             const codigoPhp = document.getElementById('codigo-php');
-            const codigoOriginal = codigoPhp.innerText.split('\n').slice(1).join('<br>');
+            const codigoOriginal = codigoPhp.innerText.split('\n').slice(1).join('\n');
 
-            let textoFormatado = '<strong>Código PHP de Exemplo:</strong><br>' + codigoOriginal;
+            let textoFormatado = '&lt;?php\n';
 
             for (let i = 0; i < texto.length; i++) {
                 if (/[a-zA-Z]/.test(texto[i])) {
@@ -50,7 +50,8 @@
                 }
             }
 
-            codigoPhp.innerHTML = textoFormatado;
+            textoFormatado += '\n?&gt;';
+            codigoPhp.innerHTML = textoFormatado + codigoOriginal;
         }
     </script>
 </body>
