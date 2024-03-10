@@ -1,6 +1,4 @@
-Entendi! Para permitir que você digite diretamente na palavra exibida, podemos substituir a label por um elemento  <span>  e adicionar um evento de clique para habilitar a edição.
- 
-Aqui está o código HTML atualizado para permitir a edição direta da palavra:
+Peço desculpas pela confusão. Aqui está o código HTML atualizado para permitir a edição direta da palavra dentro da label:
  
  
 <!DOCTYPE html>
@@ -15,21 +13,12 @@ Aqui está o código HTML atualizado para permitir a edição direta da palavra:
         #word-container {
             margin-bottom: 20px;
             position: relative;
-            cursor: text;
         }
         
         #word {
             font-size: 24px;
             font-weight: bold;
-        }
-        
-        #typed-word {
-            position: absolute;
-            top: 0;
-            left: 0;
-            font-size: 24px;
-            font-weight: bold;
-            color: red;
+            cursor: text;
         }
         
         #result {
@@ -41,55 +30,43 @@ Aqui está o código HTML atualizado para permitir a edição direta da palavra:
     <h1>Praticar Digitação</h1>
     
     <div id="word-container">
-        <span id="word">Digite uma palavra:</span>
-        <span id="typed-word"></span>
+        <label for="input-word" id="word" contenteditable="true">Digite uma palavra:</label>
+        <input type="text" id="input-word" style="display: none;">
     </div>
     
     <div id="result"></div>
     
     <script>
         const wordContainer = document.getElementById('word');
-        const typedWord = document.getElementById('typed-word');
+        const inputWord = document.getElementById('input-word');
         const result = document.getElementById('result');
-        let currentWord = '';
         
-        function getRandomWord() {
-            const words = ['gato', 'cachorro', 'elefante', 'banana', 'computador'];
-            const randomIndex = Math.floor(Math.random() * words.length);
-            return words[randomIndex];
-        }
-        
-        function updateWord() {
-            currentWord = getRandomWord();
-            wordContainer.textContent = currentWord;
-            typedWord.textContent = '';
-            wordContainer.addEventListener('click', enableEdit);
-        }
+        wordContainer.addEventListener('click', enableEdit);
         
         function enableEdit() {
             wordContainer.removeEventListener('click', enableEdit);
-            typedWord.textContent = currentWord;
-            typedWord.contentEditable = true;
-            typedWord.focus();
+            wordContainer.contentEditable = true;
+            wordContainer.focus();
         }
+        
+        wordContainer.addEventListener('input', checkWord);
         
         function checkWord() {
-            const typedText = typedWord.textContent.trim();
+            const typedText = wordContainer.textContent.trim();
             
-            if (typedText === currentWord) {
-                result.textContent = 'Correto! Digite outra palavra.';
-                updateWord();
+            if (typedText !== 'Digite uma palavra:') {
+                result.textContent = 'Você digitou: ' + typedText;
+            } else {
+                result.textContent = '';
             }
         }
-        
-        typedWord.addEventListener('input', checkWord);
-        
-        updateWord();
     </script>
 </body>
 </html>
  
  
-Neste código, removemos o elemento  <input>  e substituímos a label por um elemento  <span>  com o id  typed-word . Adicionamos um evento de clique ao elemento  wordContainer  para habilitar a edição da palavra. Quando o usuário clica na palavra, o evento  enableEdit  é acionado, permitindo que o usuário edite a palavra diretamente no local.
+Neste código, definimos a propriedade  contenteditable="true"  na label  word  para torná-la editável. Removemos o elemento  <span>   typed-word  e usamos o próprio elemento  word  para exibir e editar a palavra.
+ 
+Agora você pode clicar na palavra "Digite uma palavra:" e editar diretamente no local. O texto digitado será exibido no elemento  result .
  
 Espero que isso atenda às suas necessidades! Se você tiver mais alguma dúvida ou precisar de mais ajustes, estou à disposição.
