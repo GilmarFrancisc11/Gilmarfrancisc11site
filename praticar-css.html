@@ -29,6 +29,12 @@
   </style>
   
   <script>
+    var inicioDigitacao = null;
+    
+    function iniciarTempo() {
+      inicioDigitacao = new Date();
+    }
+    
     function aplicarCor() {
       var texto1 = document.getElementById("campo-css").value;
       var texto2 = document.getElementById("campo-digitacao").value;
@@ -49,6 +55,15 @@
       }
       
       document.getElementById("campo-css").innerHTML = textoFormatado;
+      
+      if (inicioDigitacao) {
+        var tempoDecorrido = new Date() - inicioDigitacao;
+        var segundos = Math.floor(tempoDecorrido / 1000);
+        var minutos = Math.floor(segundos / 60);
+        segundos = segundos % 60;
+        
+        document.getElementById("tempo-decorrido").innerHTML = "Tempo decorrido: " + minutos + "min " + segundos + "s";
+      }
     }
   </script>
 </head>
@@ -57,19 +72,16 @@
   
   <label for="campo-css">Propriedades do CSS:</label>
   <br>
-  <textarea id="campo-css" readonly>
-    width: 300px;
-    height: 100px;
-    border: 1px solid black;
-    padding: 10px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-  </textarea>
+  <div id="campo-css"></div>
   
   <br><br>
   
   <label for="campo-digitacao">Digite o que está no primeiro campo:</label>
   <br>
-  <textarea id="campo-digitacao" oninput="aplicarCor()"></textarea>
+  <textarea id="campo-digitacao" oninput="aplicarCor(); iniciarTempo();"></textarea>
+  
+  <br><br>
+  
+  <div id="tempo-decorrido"></div>
 </body>
 </html>
